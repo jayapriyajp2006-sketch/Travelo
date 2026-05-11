@@ -66,19 +66,44 @@
             opacity: 0.5;
         }
 
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            z-index: 10;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #00c2a8;
+            transform: translateY(-3px);
+        }
+
         /* MAIN BOX */
 
         .signin-container {
             width: 100%;
-            max-width: 1050px;
-            min-height: 650px;
+            max-width: 1200px;
+            min-height: 700px;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(22px);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 35px;
             overflow: hidden;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             position: relative;
             z-index: 2;
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
@@ -181,6 +206,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+            overflow-y: auto;
         }
 
         .form-title h2 {
@@ -203,13 +229,13 @@
 
         .input-group input {
             width: 100%;
-            height: 60px;
-            border-radius: 18px;
+            height: 52px;
+            border-radius: 14px;
             border: 2px solid transparent;
             background: #f3f7f7;
-            padding: 0 20px 0 58px;
+            padding: 0 18px 0 52px;
             outline: none;
-            font-size: 15px;
+            font-size: 14px;
             transition: 0.3s;
         }
 
@@ -238,16 +264,16 @@
 
         .signin-btn {
             width: 100%;
-            height: 60px;
+            height: 52px;
             border: none;
-            border-radius: 18px;
+            border-radius: 14px;
             background: linear-gradient(135deg, #00c2a8, #007f73);
             color: white;
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.4s;
-            box-shadow: 0 15px 30px rgba(0, 127, 115, 0.3);
+            box-shadow: 0 12px 24px rgba(0, 127, 115, 0.25);
         }
 
         .signin-btn:hover {
@@ -290,8 +316,8 @@
 
         .social-btn {
             flex: 1;
-            height: 56px;
-            border-radius: 16px;
+            height: 48px;
+            border-radius: 14px;
             border: 1px solid #ddd;
             background: white;
             display: flex;
@@ -301,6 +327,7 @@
             cursor: pointer;
             transition: 0.3s;
             font-weight: 500;
+            font-size: 14px;
         }
 
         .social-btn:hover {
@@ -323,6 +350,260 @@
             font-weight: 600;
         }
 
+        /* GOOGLE POPUP */
+
+        .google-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.3s;
+        }
+
+        .google-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .google-box {
+            width: 420px;
+            background: white;
+            border-radius: 30px;
+
+            padding: 40px 35px;
+
+            text-align: center;
+
+            animation: popupAnim 0.4s ease;
+        }
+
+        @keyframes popupAnim {
+
+            from {
+                transform: scale(0.8) translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .google-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: auto;
+            margin-bottom: 20px;
+
+            border-radius: 50%;
+
+            background: #fff4f3;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .google-icon i {
+            font-size: 34px;
+            color: #00c2a8;
+        }
+
+        .google-box h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .google-box p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .google-box input {
+            width: 100%;
+            height: 58px;
+
+            border-radius: 16px;
+            border: 1px solid #ddd;
+
+            padding: 0 18px;
+
+            margin-bottom: 18px;
+
+            outline: none;
+            font-size: 15px;
+        }
+
+        .google-box input:focus {
+            border-color: #00c2a8;
+        }
+
+        .google-box button {
+            width: 100%;
+            height: 58px;
+
+            border: none;
+            border-radius: 16px;
+
+            background: linear-gradient(135deg, #00c2a8, #007f73);
+
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .google-box button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* APPLE POPUP */
+
+        .apple-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.3s;
+        }
+
+        .apple-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .apple-box {
+            width: 420px;
+            background: white;
+            border-radius: 30px;
+
+            padding: 40px 35px;
+
+            text-align: center;
+
+            animation: popupAnim 0.4s ease;
+        }
+
+        .apple-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: auto;
+            margin-bottom: 20px;
+
+            border-radius: 50%;
+
+            background: #f5f5f5;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .apple-icon i {
+            font-size: 36px;
+            color: #00c2a8;
+        }
+
+        .apple-box h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .apple-box p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .apple-box input {
+            width: 100%;
+            height: 58px;
+
+            border-radius: 16px;
+            border: 1px solid #ddd;
+
+            padding: 0 18px;
+
+            margin-bottom: 18px;
+
+            outline: none;
+            font-size: 15px;
+        }
+
+        .apple-box input:focus {
+            border-color: #00c2a8;
+        }
+
+        .apple-box button {
+            width: 100%;
+            height: 58px;
+
+            border: none;
+            border-radius: 16px;
+
+            background: #00c2a8;
+
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .apple-box button:hover {
+            transform: translateY(-3px);
+            background: #000;
+        }
+
+        .apple-box span {
+            display: inline-block;
+            margin-top: 18px;
+
+            color: #00c2a8;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .google-box span {
+            display: inline-block;
+            margin-top: 18px;
+
+            color: #00c2a8;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
         /* RESPONSIVE */
 
         @media(max-width: 980px) {
@@ -343,6 +624,9 @@
 </head>
 
 <body>
+    <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
 
     <div class="glow glow1"></div>
     <div class="glow glow2"></div>
@@ -432,12 +716,11 @@
 
                 <div class="social-buttons">
 
-                    <div class="social-btn">
+                    <div class="social-btn" onclick="openGooglePopup()">
                         <i class="fa-brands fa-google"></i>
                         Google
                     </div>
-
-                    <div class="social-btn">
+                    <div class="social-btn" onclick="openApplePopup()">
                         <i class="fa-brands fa-apple"></i>
                         Apple
                     </div>
@@ -448,13 +731,140 @@
                     Already have an account?
                     <a href="Register.html" style="font-weight:600; color:#007f73;">Sign In</a>
                 </div>
+                <!-- GOOGLE POPUP -->
+                <div class="google-popup" id="googlePopup">
 
+                    <div class="google-box">
+
+                        <div class="google-icon">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+
+                        <h2>Continue with Google</h2>
+
+                        <p>
+                            Enter your details to sign in with Google
+                        </p>
+
+                        <input type="text" placeholder="Enter your name">
+
+                        <input type="email" placeholder="Enter your email">
+
+                        <button type="button" onclick="googleLogin()">
+                            Sign in with Google
+                        </button>
+
+                        <span onclick="closeGooglePopup()">
+                            Cancel
+                        </span>
+
+                    </div>
+
+                </div>
+                <!-- APPLE POPUP -->
+                <div class="apple-popup" id="applePopup">
+
+                    <div class="apple-box">
+
+                        <div class="apple-icon">
+                            <i class="fa-brands fa-apple"></i>
+                        </div>
+
+                        <h2>Continue with Apple</h2>
+
+                        <p>
+                            Sign in securely with your Apple account
+                        </p>
+
+                        <input type="text" placeholder="Enter your Apple ID">
+
+                        <input type="password" placeholder="Enter your password">
+
+                        <button type="button" onclick="appleLogin()">
+                            Sign in with Apple
+                        </button>
+
+                        <span onclick="closeApplePopup()">
+                            Cancel
+                        </span>
+
+                    </div>
+
+                </div>
             </form>
 
         </div>
 
     </div>
+    <script>
 
+        // NORMAL LOGIN / CREATE ACCOUNT
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            // GET EMAIL
+            const emailInput = document.querySelector('input[type="email"]');
+            const email = emailInput.value;
+
+            // SAVE USER
+            localStorage.setItem("traveloUser", email);
+            localStorage.setItem("traveloLoggedIn", "true");
+
+            // TEST
+            console.log(localStorage.getItem("traveloUser"));
+            console.log(localStorage.getItem("traveloLoggedIn"));
+
+            // REDIRECT
+            window.location.replace("index.html");
+
+        });
+
+
+        // GOOGLE
+        function openGooglePopup() {
+            document.getElementById("googlePopup").classList.add("active");
+        }
+
+        function closeGooglePopup() {
+            document.getElementById("googlePopup").classList.remove("active");
+        }
+
+        function googleLogin() {
+
+            const email =
+                document.querySelector('.google-box input[type="email"]').value;
+
+            localStorage.setItem("traveloUser", email);
+            localStorage.setItem("traveloLoggedIn", "true");
+
+            window.location.replace("index.html");
+        }
+
+
+        // APPLE
+        function openApplePopup() {
+            document.getElementById("applePopup").classList.add("active");
+        }
+
+        function closeApplePopup() {
+            document.getElementById("applePopup").classList.remove("active");
+        }
+
+        function appleLogin() {
+
+            const appleId =
+                document.querySelector('.apple-box input[type="text"]').value;
+
+            localStorage.setItem("traveloUser", appleId);
+            localStorage.setItem("traveloLoggedIn", "true");
+
+            window.location.replace("index.html");
+        }
+
+    </script>
 </body>
 
 </html>
