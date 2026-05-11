@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Travelo Explore</title>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0F766E;
+            --secondary: #134E4A;
+            --light: #ECFEFF;
+            --dark: #121212;
+            --white: #ffffff;
+        }
+
+        body {
+            background: #F6FBFB;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 90px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+
+            padding: 22px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(18, 18, 18, 0.65);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #0F766E, #14B8A6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
+            transition: 0.4s;
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+            transform: rotate(8deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .logo-text small {
+            font-size: 12px;
+            color: #bff7f2;
+            letter-spacing: 3px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(0deg) scale(1.08);
+        }
+
+        .profile-link {
+            text-decoration: none;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* FIXED NAVBAR MOBILE */
+
+        @media(max-width:950px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .navbar {
+                padding: 20px 5%;
+            }
+
+            .logo-text span {
+                font-size: 26px;
+            }
+
+            .profile-box {
+                padding: 8px 10px;
+            }
+
+            .profile-box h4 {
+                font-size: 13px;
+            }
+
+            .profile-box small {
+                font-size: 10px;
+            }
+
+        }
+
+        /* NAV LINKS */
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #14B8A6;
+        }
+
+        /* RIGHT NAV */
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        /* SEARCH ICON */
+
+        .nav-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 16px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .nav-icon:hover {
+            background: #0F766E;
+            transform: translateY(-3px);
+        }
+
+        /* SETTINGS */
+
+        .settings-wrapper {
+            position: relative;
+        }
+
+        .settings-btn {
+            width: 48px;
+            height: 48px;
+
+            border: none;
+
+            border-radius: 16px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            font-size: 18px;
+        }
+
+        .settings-btn:hover {
+            background: #0F766E;
+            transform: rotate(90deg);
+        }
+
+        /* SETTINGS MENU */
+
+        .settings-menu {
+            position: absolute;
+
+            top: 65px;
+            right: 0;
+
+            width: 260px;
+
+            background: rgba(18, 18, 18, 0.95);
+
+            backdrop-filter: blur(20px);
+
+            border-radius: 24px;
+
+            padding: 16px;
+
+            display: none;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            z-index: 1000;
+        }
+
+        .settings-menu.active {
+            display: flex;
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 16px;
+
+            border-radius: 18px;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .setting-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .setting-item i {
+            color: #d4d4d4;
+        }
+
+        .logout-item {
+            color: #ffb4b4;
+        }
+
+        .profile-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px 14px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.35s;
+            cursor: pointer;
+        }
+
+        .profile-box:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .profile-box img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .profile-box h4 {
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .profile-box small {
+            color: #bff7f2;
+            font-size: 11px;
+        }
+
+        /* SOCIAL ICONS */
+
+        .social-icons {
+            display: flex;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .social-icons i {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #1f1f1f;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #14B8A6;
+
+            transition: 0.3s;
+        }
+
+        .social-icons i:hover {
+            background: #0F766E;
+            color: white;
+        }
+
+        /* COPYRIGHT */
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
+            color: #aaa;
+            margin-top: 40px;
+        }
+
+        /* HERO */
+
+        .explore-hero {
+
+            min-height: 70vh;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)),
+
+                url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop');
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 140px 8% 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* EXPLORE SECTION */
+
+        .explore-section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 50px;
+            margin-bottom: 14px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* GRID */
+
+        .explore-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(320px, 1fr));
+
+            gap: 30px;
+        }
+
+        .explore-card,
+        .template-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.4s;
+        }
+
+        .explore-card img,
+        .template-card img {
+            transition: 0.5s;
+        }
+
+        .explore-card:hover img,
+        .template-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .explore-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .explore-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .explore-content {
+            padding: 28px;
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 14px;
+        }
+
+        .top-row h3 {
+            font-size: 28px;
+        }
+
+        .price {
+            background: var(--primary);
+            color: white;
+
+            padding: 8px 14px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .explore-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rating {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .book-btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 30px;
+
+            background: var(--primary);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+            background: var(--secondary);
+        }
+
+
+        /* TEMPLATE SECTION */
+
+        .template-section {
+            padding: 100px 8%;
+            background: #ECFEFF;
+        }
+
+        .template-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(320px, 1fr));
+
+            gap: 30px;
+        }
+
+        .template-card {
+            background: white;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
+
+            transition: 0.4s;
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .template-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .template-content {
+            padding: 28px;
+        }
+
+        .tag {
+            background: #0F766E;
+            color: white;
+
+            padding: 8px 16px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .template-content h3 {
+            margin: 18px 0 14px;
+
+            font-size: 28px;
+        }
+
+        .template-content p {
+            color: #666;
+            line-height: 1.8;
+
+            margin-bottom: 22px;
+        }
+
+        .template-btn {
+            border: none;
+
+            padding: 12px 24px;
+
+            border-radius: 30px;
+
+            background: #0F766E;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .template-btn:hover {
+            background: #134E4A;
+        }
+
+        /* FOOTER */
+
+        footer {
+            width: 100%;
+
+            background: #000;
+
+            color: white;
+
+            padding: 90px 6% 30px;
+        }
+
+        .footer-grid {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 50px;
+
+            margin-bottom: 50px;
+        }
+
+        .footer-box h3 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-box p {
+            color: #bdbdbd;
+            line-height: 2;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .footer-logo .logo-text span {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .social-icons i {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #111111;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #14B8A6;
+
+            transition: 0.3s;
+        }
+
+        .social-icons i:hover {
+            background: #0F766E;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        .copyright {
+            text-align: center;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            padding-top: 25px;
+
+            color: #888;
+
+            margin-top: 20px;
+        }
+
+        /* SEARCH POPUP */
+
+        .search-popup {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.6);
+
+            backdrop-filter: blur(8px);
+
+            display: none;
+
+            justify-content: center;
+            align-items: flex-start;
+
+            padding-top: 120px;
+
+            z-index: 2000;
+        }
+
+        .search-popup.active {
+            display: flex;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 600px;
+
+            background: rgba(18, 18, 18, 0.92);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 30px;
+
+            padding: 24px;
+
+            backdrop-filter: blur(20px);
+
+            animation: popup 0.3s ease;
+        }
+
+        @keyframes popup {
+
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .search-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 22px;
+        }
+
+        .search-top h2 {
+            color: white;
+        }
+
+        .search-top i {
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+        .search-input-box {
+            width: 100%;
+
+            height: 58px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 18px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 18px;
+
+            margin-bottom: 22px;
+        }
+
+        .search-input-box i {
+            color: #aaa;
+
+            margin-right: 12px;
+        }
+
+        .search-input-box input {
+            width: 100%;
+
+            background: transparent;
+
+            border: none;
+            outline: none;
+
+            color: white;
+
+            font-size: 16px;
+        }
+
+        .search-input-box input::placeholder {
+            color: #aaa;
+        }
+
+        .search-results {
+            display: flex;
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .search-item {
+            padding: 16px;
+
+            border-radius: 16px;
+
+            background: rgba(255, 255, 255, 0.06);
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .search-item:hover {
+            background: var(--primary);
+
+            transform: translateX(5px);
+        }
+
+        /* SAME THEME EXTRA SECTIONS */
+
+        /* FEATURED DESTINATIONS */
+
+        .featured-section {
+            padding: 100px 8%;
+            background: #F6FBFB;
+        }
+
+        .featured-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(320px, 1fr));
+
+            gap: 30px;
+        }
+
+        .featured-card {
+            position: relative;
+
+            height: 450px;
+
+            border-radius: 32px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.08);
+
+            transition: 0.4s;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .featured-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(to top,
+                    rgba(0, 0, 0, 0.8),
+                    transparent);
+
+            padding: 35px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .featured-overlay span {
+            color: #14B8A6;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .featured-overlay h3 {
+            color: white;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .featured-overlay p {
+            color: #dcdcdc;
+            line-height: 1.7;
+        }
+
+        /* EXPERIENCE SECTION */
+
+        .experience-section {
+            padding: 100px 8%;
+
+            background: #ECFEFF;
+        }
+
+        .experience-wrapper {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(350px, 1fr));
+
+            gap: 40px;
+
+            align-items: center;
+        }
+
+        .experience-image {
+            position: relative;
+        }
+
+        .experience-image img {
+            width: 100%;
+            border-radius: 30px;
+
+            height: 550px;
+            object-fit: cover;
+        }
+
+        .experience-content h2 {
+            font-size: 52px;
+            margin-bottom: 25px;
+        }
+
+        .experience-content p {
+            color: #666;
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            font-weight: 500;
+        }
+
+        .experience-item i {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: #0F766E;
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .experience-btn {
+            border: none;
+
+            padding: 15px 28px;
+
+            border-radius: 30px;
+
+            background: #0F766E;
+
+            color: white;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .experience-btn:hover {
+            background: #134E4A;
+        }
+
+
+        /* REVIEW SECTION */
+
+        .review-section {
+            padding: 110px 8%;
+        }
+
+        /* ONE LINE SCROLL ROW */
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* REVIEW CARD */
+        .review-card {
+            background: white;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+
+
+        /* USER TOP */
+        .review-top {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .review-top img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .review-top h4 {
+            font-size: 18px;
+        }
+
+        .review-top span {
+            color: #14B8A6;
+            font-size: 14px;
+        }
+
+        /* TEXT */
+        .review-card p {
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .review-stars {
+            color: #f59e0b;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .section-title h2 {
+                font-size: 36px;
+            }
+
+        }
+
+        @media(max-width:900px) {
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- BACK -->
+
+    <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-plane"></i>
+            </div>
+
+            <div class="logo-text">
+                <span>Travelo</span>
+                <small>Explore World</small>
+            </div>
+
+        </div>
+
+        <!-- NAV LINKS -->
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Booking</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="nav-right">
+
+            <!-- SEARCH -->
+
+            <!-- SEARCH -->
+
+            <div class="nav-icon" id="openSearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="search-popup" id="searchPopup">
+
+                <div class="search-box">
+
+                    <div class="search-top">
+
+                        <h2>Search Destinations</h2>
+
+                        <i class="fa-solid fa-xmark" id="closeSearch"></i>
+
+                    </div>
+
+                    <div class="search-input-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input type="text" id="searchInput" placeholder="Search places like Bali, Dubai, Paris...">
+
+                    </div>
+
+                    <div class="search-results" id="searchResults">
+
+                        <div class="search-item">Bali</div>
+                        <div class="search-item">Dubai</div>
+                        <div class="search-item">Paris</div>
+                        <div class="search-item">Maldives</div>
+                        <div class="search-item">Tokyo</div>
+                        <div class="search-item">Singapore</div>
+                        <div class="search-item">Switzerland</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- SETTINGS -->
+
+            <div class="settings-wrapper">
+
+                <button class="settings-btn" id="settingsToggle">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+
+                <div class="settings-menu" id="settingsMenu">
+
+                    <div class="setting-item">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Edit Profile</span>
+                    </div>
+
+                    <div class="setting-item">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Wishlist</span>
+                    </div>
+
+                    <div class="setting-item">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Security</span>
+                    </div>
+
+                    <div class="setting-item">
+                        <i class="fa-solid fa-bell"></i>
+                        <span>Notifications</span>
+                    </div>
+
+                    <div class="setting-item logout-item">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PROFILE -->
+
+            <a href="Register.html" class="profile-link">
+
+                <div class="profile-box">
+
+                    <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Travel" alt="user">
+
+                    <div>
+                        <h4>Sign In</h4>
+                        <small>Account</small>
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </nav>
+    <!-- HERO -->
+
+    <section class="explore-hero">
+
+        <div class="hero-content">
+
+            <h1>Explore Amazing Destinations</h1>
+
+            <p>
+                Discover premium travel experiences,
+                luxury stays and unforgettable adventures
+                around the world.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- DESTINATIONS -->
+
+    <section class="explore-section">
+
+        <div class="section-title">
+
+            <h2>Popular Destinations</h2>
+
+            <p>
+                Hand picked destinations for modern travelers.
+            </p>
+
+        </div>
+
+        <div class="explore-grid">
+
+            <!-- CARD -->
+
+            <div class="explore-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop">
+
+                <div class="explore-content">
+
+                    <div class="top-row">
+
+                        <h3>Bali</h3>
+
+                        <div class="price">$499</div>
+
+                    </div>
+
+                    <p>
+                        Tropical beaches, luxury resorts
+                        and unforgettable sunsets.
+                    </p>
+
+                    <div class="card-bottom">
+
+                        <div class="rating">
+                            ★ 4.9
+                        </div>
+
+                        <button class="book-btn">
+                            Explore
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CARD -->
+
+            <div class="explore-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1400&auto=format&fit=crop">
+
+                <div class="explore-content">
+
+                    <div class="top-row">
+
+                        <h3>Switzerland</h3>
+
+                        <div class="price">$999</div>
+
+                    </div>
+
+                    <p>
+                        Snow mountains, scenic trains
+                        and breathtaking landscapes.
+                    </p>
+
+                    <div class="card-bottom">
+
+                        <div class="rating">
+                            ★ 5.0
+                        </div>
+
+                        <button class="book-btn">
+                            Explore
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CARD -->
+
+            <div class="explore-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1400&auto=format&fit=crop">
+
+                <div class="explore-content">
+
+                    <div class="top-row">
+
+                        <h3>Tokyo</h3>
+
+                        <div class="price">$1099</div>
+
+                    </div>
+
+                    <p>
+                        Futuristic skyline, anime culture
+                        and vibrant nightlife.
+                    </p>
+
+                    <div class="card-bottom">
+
+                        <div class="rating">
+                            ★ 4.8
+                        </div>
+
+                        <button class="book-btn">
+                            Explore
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADVENTURE SECTION -->
+
+        <section class="template-section">
+
+            <div class="section-title">
+                <h2>Adventure Experiences</h2>
+                <p>Thrilling experiences for adventure lovers.</p>
+            </div>
+
+            <div class="template-grid">
+
+                <div class="template-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop">
+
+                    <div class="template-content">
+                        <span class="tag">Adventure</span>
+
+                        <h3>Mountain Hiking</h3>
+
+                        <p>
+                            Explore breathtaking mountains and
+                            unforgettable hiking adventures.
+                        </p>
+
+                        <button class="template-btn">
+                            Explore More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=1400&auto=format&fit=crop">
+
+                    <div class="template-content">
+                        <span class="tag">Luxury</span>
+
+                        <h3>Luxury Resort</h3>
+
+                        <p>
+                            Premium beach resorts with luxury
+                            experiences and private villas.
+                        </p>
+
+                        <button class="template-btn">
+                            Explore More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="template-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1400&auto=format&fit=crop">
+
+                    <div class="template-content">
+                        <span class="tag">Nature</span>
+
+                        <h3>Forest Escape</h3>
+
+                        <p>
+                            Relax in beautiful forests and
+                            peaceful natural environments.
+                        </p>
+
+                        <button class="template-btn">
+                            Explore More
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- FEATURED DESTINATIONS -->
+
+            <section class="featured-section">
+
+                <div class="section-title">
+                    <h2>Featured Destinations</h2>
+                    <p>Luxury destinations loved by travelers worldwide.</p>
+                </div>
+
+                <div class="featured-grid">
+
+                    <div class="featured-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop">
+
+                        <div class="featured-overlay">
+                            <span>Tropical Escape</span>
+
+                            <h3>Maldives</h3>
+
+                            <p>
+                                Crystal clear waters and luxury beach resorts.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="featured-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1400&auto=format&fit=crop">
+
+                        <div class="featured-overlay">
+                            <span>Mountain Beauty</span>
+
+                            <h3>Switzerland</h3>
+
+                            <p>
+                                Snow mountains and breathtaking landscapes.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="featured-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1400&auto=format&fit=crop">
+
+                        <div class="featured-overlay">
+                            <span>City Lights</span>
+
+                            <h3>Tokyo</h3>
+
+                            <p>
+                                Futuristic city experiences and vibrant nightlife.
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="featured-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1400&auto=format&fit=crop">
+                        <div class="featured-overlay">
+                            <span>Island Paradise</span>
+
+                            <h3>Bora Bora</h3>
+
+                            <p>
+                                Overwater villas, crystal lagoons and pure luxury escape.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- EXPERIENCE SECTION -->
+
+            <section class="experience-section">
+
+                <div class="experience-wrapper">
+
+                    <div class="experience-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop">
+
+                    </div>
+
+                    <div class="experience-content">
+
+                        <h2>Travel Beyond Your Imagination</h2>
+
+                        <p>
+                            Explore premium destinations with luxury comfort,
+                            unforgettable adventures and personalized experiences
+                            designed for modern travelers.
+                        </p>
+
+                        <div class="experience-list">
+
+                            <div class="experience-item">
+                                <i class="fa-solid fa-plane"></i>
+                                Premium Flight Booking
+                            </div>
+
+                            <div class="experience-item">
+                                <i class="fa-solid fa-hotel"></i>
+                                Luxury Hotel Experiences
+                            </div>
+
+                            <div class="experience-item">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                Guided Travel Tours
+                            </div>
+
+                        </div>
+
+                        <button class="experience-btn">
+                            Explore More
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- REVIEWS -->
+
+            <section class="review-section">
+
+                <div class="section-title">
+                    <h2>Traveler Reviews</h2>
+                    <p>What our travelers say about Travelo.</p>
+                </div>
+
+                <div class="review-grid">
+
+                    <div class="review-card">
+
+                        <div class="review-top">
+
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+                            <div>
+                                <h4>Emma Watson</h4>
+                                <span>Travel Blogger</span>
+                            </div>
+
+                        </div>
+
+                        <p>
+                            Amazing luxury experience and beautiful destinations.
+                            Everything was perfectly organized.
+                        </p>
+
+                        <div class="review-stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+
+                    <div class="review-card">
+
+                        <div class="review-top">
+
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+                            <div>
+                                <h4>Daniel James</h4>
+                                <span>Adventure Traveler</span>
+                            </div>
+
+                        </div>
+
+                        <p>
+                            One of the best travel platforms I have used.
+                            Smooth booking and premium experiences.
+                        </p>
+
+                        <div class="review-stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+
+                    <div class="review-card">
+
+                        <div class="review-top">
+
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg">
+
+                            <div>
+                                <h4>Sophia Lee</h4>
+                                <span>Luxury Explorer</span>
+                            </div>
+
+                        </div>
+
+                        <p>
+                            Beautiful UI and unforgettable destinations.
+                            The overall experience felt premium.
+                        </p>
+
+                        <div class="review-stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+    </section>
+
+    <!-- FOOTER -->
+
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <!-- FOOTER LOGO BOX -->
+
+            <div class="footer-box">
+
+                <div class="logo footer-logo">
+
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+
+                    <div class="logo-text">
+                        <span>Travelo</span>
+                        <small>Explore World</small>
+                    </div>
+
+                </div>
+
+                <p>
+                    Premium travel booking platform designed for modern travelers and adventure lovers.
+                </p>
+
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+
+            </div>
+
+            <!-- QUICK LINKS -->
+
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <p>Home</p>
+                <p>About Us</p>
+                <p>Booking</p>
+                <p>Contact</p>
+            </div>
+
+            <!-- SUPPORT -->
+
+            <div class="footer-box">
+                <h3>Support</h3>
+                <p>FAQs</p>
+                <p>Contact Us</p>
+                <p>Privacy Policy</p>
+                <p>Terms of Service</p>
+            </div>
+
+            <!-- CONTACT -->
+
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p>Email: support@travelo.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Chennai, India</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Travelo. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+
+
+    <script>
+
+        /* SETTINGS */
+
+        const settingsToggle =
+            document.getElementById("settingsToggle");
+
+        const settingsMenu =
+            document.getElementById("settingsMenu");
+
+        settingsToggle.onclick = () => {
+
+            settingsMenu.classList.toggle("active");
+
+        };
+
+        /* SEARCH */
+
+        const openSearch =
+            document.getElementById("openSearch");
+
+        const closeSearch =
+            document.getElementById("closeSearch");
+
+        const searchPopup =
+            document.getElementById("searchPopup");
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const searchItems =
+            document.querySelectorAll(".search-item");
+
+        openSearch.onclick = () => {
+            searchPopup.classList.add("active");
+            searchInput.focus();
+        };
+
+        closeSearch.onclick = () => {
+            searchPopup.classList.remove("active");
+        };
+
+        /* FILTER SEARCH */
+
+        searchInput.addEventListener("keyup", () => {
+
+            let value =
+                searchInput.value.toLowerCase();
+
+            searchItems.forEach(item => {
+
+                if (
+                    item.innerText.toLowerCase()
+                        .includes(value)
+                ) {
+                    item.style.display = "block";
+                }
+
+                else {
+                    item.style.display = "none";
+                }
+
+            });
+
+        });
+
+        /* CLOSE WHEN CLICK OUTSIDE */
+
+        window.addEventListener("click", function (e) {
+
+            if (
+                !settingsToggle.contains(e.target)
+                &&
+                !settingsMenu.contains(e.target)
+            ) {
+                settingsMenu.classList.remove("active");
+            }
+
+            if (e.target === searchPopup) {
+                searchPopup.classList.remove("active");
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
