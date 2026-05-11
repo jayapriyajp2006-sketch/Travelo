@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelo Settings</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #071a2d, #0b3652, #106c80);
+            color: white;
+            padding: 20px;
+        }
+
+        .settings-container {
+            max-width: 430px;
+            margin: auto;
+        }
+
+        .top-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .circle-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .profile-center {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .profile-center img {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .profile-center h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .profile-center p {
+            color: #cfe7f2;
+            font-size: 14px;
+        }
+
+        .quick-boxes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .quick-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 16px 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .quick-card i {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .quick-card span {
+            display: block;
+            font-size: 12px;
+        }
+
+        .settings-list {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .setting-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .setting-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .setting-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .setting-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .setting-info h4 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .setting-info p {
+            font-size: 12px;
+            color: #d2e5f0;
+        }
+
+        .arrow {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .logout {
+            width: 100%;
+            margin-top: 30px;
+            border: none;
+            padding: 17px;
+            border-radius: 20px;
+            background: linear-gradient(to right, #14b8c9, #25d0b7);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="settings-container">
+
+        <div class="top-section">
+
+            <div class="top-row">
+                <a href="profile.html" class="circle-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+
+                <a href="#" class="circle-btn">
+                    <i class="fa-solid fa-gear"></i>
+                </a>
+            </div>
+
+            <div class="profile-center">
+                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=travelo" alt="profile">
+
+                <h2>Jayapriya</h2>
+                <p>Luxury Explorer</p>
+            </div>
+
+            <div class="quick-boxes">
+
+                <div class="quick-card">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Wishlist</span>
+                </div>
+
+                <div class="quick-card">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span>Bookings</span>
+                </div>
+
+                <div class="quick-card">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Premium</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="settings-list">
+
+            <div class="setting-card">
+                <div class="setting-left">
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div class="setting-info">
+                        <h4>Edit Profile</h4>
+                        <p>Manage account details</p>
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-left">
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="setting-info">
+                        <h4>Security</h4>
+                        <p>Password & privacy</p>
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-left">
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+
+                    <div class="setting-info">
+                        <h4>Notifications</h4>
+                        <p>Travel updates & offers</p>
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <i class="fa-solid fa-toggle-on"></i>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-left">
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+
+                    <div class="setting-info">
+                        <h4>Language</h4>
+                        <p>English</p>
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-left">
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+
+                    <div class="setting-info">
+                        <h4>Help Center</h4>
+                        <p>Support & FAQs</p>
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </button>
+
+    </div>
+
+</body>
+
+</html>
+```

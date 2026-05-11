@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travelo - Terms & Conditions</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background:
+                linear-gradient(rgba(4, 18, 24, 0.82),
+                    rgba(4, 18, 24, 0.88)),
+                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        /* GLOW EFFECT */
+
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+        }
+
+        .glow1 {
+            width: 320px;
+            height: 320px;
+            background: #00c2a8;
+            top: -100px;
+            left: -100px;
+            opacity: 0.4;
+        }
+
+        .glow2 {
+            width: 280px;
+            height: 280px;
+            background: #007f73;
+            bottom: -100px;
+            right: -100px;
+            opacity: 0.4;
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+
+            transition: 0.3s;
+            z-index: 5;
+        }
+
+        .back-btn:hover {
+            background: #00c2a8;
+            transform: translateY(-3px);
+        }
+
+        /* MAIN BOX */
+
+        .terms-container {
+            width: 100%;
+            max-width: 950px;
+            height: 95vh;
+
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(20px);
+
+            border-radius: 35px;
+
+            padding: 50px;
+
+            color: white;
+
+            position: relative;
+            z-index: 2;
+
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 35px;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 18px;
+
+            background: linear-gradient(135deg, #0F766E, #14B8A6);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transform: rotate(-8deg);
+
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+            transform: rotate(8deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .logo-text small {
+            font-size: 10px;
+            color: #bff7f2;
+            letter-spacing: 2px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        /* TITLE */
+
+        .terms-title h1 {
+            font-size: 50px;
+            margin-bottom: 12px;
+            line-height: 1.1;
+        }
+
+        .terms-title p {
+            color: #d5f7f3;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        /* TERMS CONTENT */
+
+        .terms-box {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 30px;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .terms-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .terms-box::-webkit-scrollbar-thumb {
+            background: #00c2a8;
+            border-radius: 10px;
+        }
+
+        .terms-box h3 {
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .terms-box p {
+            color: #d9f7f3;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        /* BUTTONS */
+
+        .button-group {
+            margin-top: 35px;
+
+            display: flex;
+            gap: 18px;
+        }
+
+        .agree-btn,
+        .deny-btn {
+            flex: 1;
+            height: 56px;
+
+            border: none;
+            border-radius: 16px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .agree-btn {
+            background: linear-gradient(135deg, #00c2a8, #007f73);
+            color: white;
+
+            box-shadow: 0 12px 24px rgba(0, 194, 168, 0.25);
+        }
+
+        .agree-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        .deny-btn {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .deny-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .terms-container {
+                padding: 30px 22px;
+            }
+
+            .terms-title h1 {
+                font-size: 36px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .terms-box {
+                max-height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <div class="terms-container">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-plane"></i>
+            </div>
+
+            <div class="logo-text">
+                <span>Travelo</span>
+                <small>Explore World</small>
+            </div>
+
+        </div>
+
+        <!-- TITLE -->
+
+        <div class="terms-title">
+
+            <h1>
+                Terms & <br>
+                Conditions
+            </h1>
+
+            <p>
+                Please read and accept our terms before continuing your
+                journey with Travelo.
+            </p>
+
+        </div>
+
+        <!-- TERMS -->
+
+        <div class="terms-box">
+
+            <h3>1. User Agreement</h3>
+
+            <p>
+                By using Travelo, you agree to follow all platform rules,
+                travel policies and community guidelines.
+            </p>
+
+            <h3>2. Privacy Policy</h3>
+
+            <p>
+                Your personal information is securely protected and will
+                never be shared without your permission.
+            </p>
+
+            <h3>3. Booking & Payments</h3>
+
+            <p>
+                All bookings made through Travelo are subject to hotel,
+                airline and destination availability.
+            </p>
+
+            <h3>4. Account Responsibility</h3>
+
+            <p>
+                You are responsible for maintaining the security of your
+                Travelo account and login credentials.
+            </p>
+
+            <h3>5. Travel Safety</h3>
+
+            <p>
+                Travelo is not responsible for unexpected travel issues,
+                weather conditions or destination restrictions.
+            </p>
+
+            <h3>6. Updates</h3>
+
+            <p>
+                These terms may be updated anytime to improve our platform
+                and travel experience.
+            </p>
+
+        </div>
+
+        <!-- BUTTONS -->
+
+        <div class="button-group">
+
+            <button class="agree-btn" onclick="agreeTerms()">
+                <i class="fa-solid fa-check"></i>
+                Agree & Continue
+            </button>
+
+            <button class="deny-btn" onclick="denyTerms()">
+                <i class="fa-solid fa-xmark"></i>
+                Deny
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function agreeTerms() {
+
+            localStorage.setItem("traveloTermsAccepted", "true");
+
+            alert("Terms Accepted Successfully!");
+
+            window.location.href = "index.html";
+        }
+
+        function denyTerms() {
+
+            alert("You must accept the terms to continue.");
+
+            window.location.href = "Register.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
