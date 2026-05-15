@@ -1,0 +1,2868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Travelo Explore</title>
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #00c2a8;
+            --secondary: #007f73;
+            --light: #eafffb;
+            --dark: #0f172a;
+            --white: #ffffff;
+        }
+
+        body {
+            background: #f7fbfb;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #0F766E, #14B8A6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
+            transition: 0.4s;
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+            transform: rotate(8deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .logo-text small {
+            font-size: 12px;
+            color: #bff7f2;
+            letter-spacing: 3px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(0deg) scale(1.08);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            position: relative;
+        }
+
+
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            transition: 0.35s;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-icon:hover {
+            background: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .nav-icon i {
+            font-size: 18px;
+        }
+
+        .icon-dot {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+
+
+        .profile-box:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .profile-box img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .profile-box h4 {
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .profile-box small {
+            color: #bff7f2;
+            font-size: 11px;
+        }
+
+        .menu-btn {
+            display: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+        }
+
+
+        .nav-right i {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-right i:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* ACCOUNT */
+
+        .account-wrapper {
+            position: relative;
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px 14px;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: .3s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .account-btn:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .account-btn img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .account-text h4 {
+            color: white;
+            font-size: 14px;
+        }
+
+        .account-text small {
+            color: #bff7f2;
+            font-size: 11px;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .account-btn i {
+            color: white;
+            font-size: 12px;
+        }
+
+        /* ACCOUNT DROPDOWN */
+
+        .account-wrapper {
+            position: relative;
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 8px 14px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 18px;
+
+            backdrop-filter: blur(12px);
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .account-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .account-btn img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .account-text h4 {
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .account-text small {
+            color: #bff7f2;
+            font-size: 11px;
+        }
+
+        .account-btn i {
+            color: rgb(255, 253, 253);
+            font-size: 12px;
+        }
+
+        .account-menu {
+            position: absolute;
+
+            top: 70px;
+            right: 0;
+
+            width: 240px;
+
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+
+
+            border-radius: 24px;
+
+            padding: 12px;
+
+            backdrop-filter: blur(20px);
+
+            display: none;
+            flex-direction: column;
+
+            gap: 10px;
+
+            z-index: 1000;
+        }
+
+        .account-menu.active {
+            display: flex;
+        }
+
+        .account-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 14px 16px;
+
+            border-radius: 16px;
+
+            color: white;
+            transition: 0.3s;
+
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .account-item:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .logout-item {
+            color: #ffb4b4;
+        }
+
+        /* SMALL PREMIUM SWITCH */
+
+        .switch {
+            position: relative;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all .35s ease;
+        }
+
+        /* GLOW EFFECT */
+
+        .slider::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg,
+                    rgba(20, 184, 166, 0.35),
+                    rgba(15, 118, 110, 0.1));
+            opacity: 0;
+            transition: .35s ease;
+        }
+
+        /* SWITCH BALL */
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 50%;
+            transition: all .35s cubic-bezier(.68, -0.55, .27, 1.55);
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.25),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ACTIVE */
+
+        .switch input:checked+.slider {
+            background: linear-gradient(135deg, #14B8A6, #0F766E);
+            box-shadow: 0 0 16px rgba(20, 184, 166, 0.45);
+        }
+
+        .switch input:checked+.slider::after {
+            opacity: 1;
+        }
+
+        .switch input:checked+.slider::before {
+            transform: translate(22px, -50%);
+        }
+
+        /* HOVER */
+
+        .switch:hover .slider {
+            transform: scale(1.03);
+        }
+
+        /* SEARCH POPUP */
+
+        .search-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .65);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 120px;
+            z-index: 20000;
+            opacity: 0;
+            visibility: hidden;
+            transition: .35s;
+        }
+
+        .search-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .18);
+        }
+
+        .search-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .search-top h2 {
+            font-size: 28px;
+            color: var(--dark);
+        }
+
+        .search-top i {
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .search-input-box {
+            display: flex;
+            align-items: center;
+            background: #f0fdfa;
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin-bottom: 24px;
+        }
+
+        .search-input-box i {
+            color: var(--secondary);
+            margin-right: 12px;
+        }
+
+        .search-input-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 16px;
+        }
+
+        .search-results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .search-item {
+            padding: 12px 18px;
+            background: #f7fbfb;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s;
+            font-weight: 500;
+        }
+
+        .search-item:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+
+
+        /* HERO */
+
+        .hero {
+            min-height: 70vh;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, .65), rgba(0, 0, 0, .7)),
+                url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 150px 7% 80px;
+
+            text-align: center;
+        }
+
+        /* HERO CONTENT */
+
+        .hero-content {
+            width: 100%;
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        /* HERO TITLE */
+
+        .hero-content h1 {
+            color: white;
+
+            font-size: 72px;
+            font-weight: 800;
+
+            line-height: 1.1;
+
+            text-align: center;
+
+            max-width: 1000px;
+
+            margin: 0 auto 25px;
+        }
+
+        /* HERO DESCRIPTION */
+
+        .hero-content p {
+            color: #dffffb;
+
+            max-width: 900px;
+
+            font-size: 16px;
+            line-height: 1.9;
+
+            text-align: center;
+
+            margin: 0 auto;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .hero {
+                min-height: 60vh;
+                padding: 130px 5% 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+                line-height: 1.7;
+                padding: 0 10px;
+            }
+
+        }
+
+        /* EXPLORE SECTION */
+
+        .explore-section {
+            padding: 90px 7%;
+        }
+
+        .top-bar {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 52px;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        .filter-buttons {
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .filter-buttons button {
+            border: none;
+            padding: 14px 24px;
+            border-radius: 40px;
+
+            background: white;
+            color: #0f172a;
+            font-weight: 600;
+
+            cursor: pointer;
+            transition: .3s;
+
+            box-shadow: 0 12px 25px rgba(0, 0, 0, .06);
+        }
+
+        .filter-buttons button.active,
+        .filter-buttons button:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* GRID */
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        /* CARD */
+
+        .explore-card {
+            position: relative;
+
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+
+            transition: .4s;
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
+        }
+
+        .explore-card:hover {
+            transform: translateY(-12px);
+        }
+
+        .explore-card img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            display: block;
+            transition: 0.5s;
+        }
+
+        .explore-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* WISHLIST BUTTON */
+
+        .destination-wishlist,
+        .wishlist {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        /* HEART ICON */
+
+        .destination-wishlist i,
+        .wishlist i {
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        /* ACTIVE RED STATE */
+
+        .destination-wishlist.active,
+        .wishlist.active {
+            background: #ef4444;
+        }
+
+        /* ICON COLOR WHEN ACTIVE */
+
+        .destination-wishlist.active i,
+        .wishlist.active i {
+            color: white;
+        }
+
+        /* HOVER EFFECT */
+
+        .destination-wishlist:hover,
+        .wishlist:hover {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 28px;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .category {
+            background: var(--light);
+            color: var(--secondary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .rating {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .card-content h3 {
+            font-size: 30px;
+            margin-bottom: 14px;
+        }
+
+        .card-content p {
+            color: #666;
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        .package-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .package-info div {
+            background: #f0fdfa;
+            padding: 14px;
+            border-radius: 16px;
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .package-info i {
+            margin-right: 6px;
+        }
+
+        .price-row {
+            margin-top: 28px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .price-row small {
+            color: #666;
+        }
+
+        .price-row h2 {
+            color: var(--secondary);
+            font-size: 32px;
+            margin-top: 6px;
+        }
+
+        .price-row button {
+            border: none;
+            padding: 14px 24px;
+            border-radius: 40px;
+
+            background: linear-gradient(135deg,
+                    var(--primary),
+                    var(--secondary));
+
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .price-row button:hover {
+            transform: translateY(-4px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #121212;
+            color: white;
+            padding: 90px 7% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-box p,
+        .footer-box a {
+            color: #cbd5e1;
+            line-height: 2;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-icons i {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, .08);
+
+            color: var(--primary);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding-top: 25px;
+            text-align: center;
+            color: #cbd5e1;
+        }
+
+        .account-menu {
+            position: absolute;
+            top: 75px;
+            right: 0;
+
+            width: 240px;
+
+            background: #000;
+            /* black background */
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 24px;
+            padding: 14px;
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(15px) scale(.96);
+
+            transition:
+                opacity .3s ease,
+                transform .3s ease,
+                visibility .3s;
+
+            z-index: 1000;
+        }
+
+        .account-menu.active {
+
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(0) scale(1);
+
+        }
+
+        /* DESTINATION CARD */
+
+        .destination-card {
+            position: relative;
+            height: 360px;
+            border-radius: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* OVERLAY */
+
+        .destination-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, .85),
+                    rgba(0, 0, 0, .15));
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 28px;
+        }
+
+        /* TITLE */
+
+        .destination-overlay h3 {
+            color: #fff;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        /* DESCRIPTION */
+
+        .destination-overlay p {
+            color: #e5e7eb;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+            max-width: 90%;
+        }
+
+        /* PRICE ROW */
+
+        .destination-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-top: auto;
+        }
+
+        /* PRICE TEXT */
+
+        .destination-price small {
+            color: #d1fae5;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .destination-price h2 {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        /* BUTTON */
+
+        .destination-btn {
+            border: none;
+            outline: none;
+
+            padding: 14px 28px;
+
+            border-radius: 40px;
+
+            background: linear-gradient(135deg,
+                    var(--primary),
+                    var(--secondary));
+
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1;
+
+            cursor: pointer;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            white-space: nowrap;
+
+            transition: .3s;
+        }
+
+        .destination-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* WISHLIST */
+        /* =========================
+   WISHLIST BUTTON
+========================= */
+
+        .wishlist-btn {
+
+            position: absolute;
+            top: 18px;
+            right: 18px;
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(255, 255, 255, 0.18);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, .15);
+
+        }
+
+        /* HEART ICON */
+
+        .wishlist-btn i {
+
+            font-size: 20px;
+            color: white;
+
+            transition:
+                transform .25s ease,
+                color .25s ease;
+
+        }
+
+        /* HOVER */
+
+        .wishlist-btn:hover {
+
+            transform: scale(1.08);
+
+            background: rgba(255, 255, 255, 0.28);
+
+        }
+
+        /* CLICK EFFECT */
+
+        .wishlist-btn:active {
+
+            transform: scale(.92);
+
+        }
+
+        /* ACTIVE STATE */
+
+        .wishlist-btn.active {
+
+            background: #ef4444;
+
+            box-shadow:
+                0 10px 25px rgba(239, 68, 68, .45);
+
+        }
+
+        #wishlistFilter.active {
+
+            background: #0F766E;
+
+            color: white;
+
+        }
+
+        /* ACTIVE HEART */
+
+        .wishlist-btn.active i {
+
+            color: white;
+
+        }
+
+        /* POP ANIMATION */
+
+        .wishlist-btn.active {
+
+            animation: wishlistPop .35s ease;
+
+        }
+
+        @keyframes wishlistPop {
+
+            0% {
+                transform: scale(.7);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .destination-card {
+                height: 320px;
+            }
+
+            .destination-overlay {
+                padding: 22px;
+            }
+
+            .destination-overlay h3 {
+                font-size: 28px;
+            }
+
+            .destination-overlay p {
+                font-size: 14px;
+            }
+
+            .destination-price {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .destination-btn {
+                width: 100%;
+            }
+        }
+
+        /* PACKAGE SECTION */
+
+        .packages-section {
+            padding: 60px 7% 90px;
+            background: #f7fbfb;
+        }
+
+        /* DESTINATION SECTION */
+
+        .destinations-section {
+            padding: 90px 7% 40px;
+            background: white;
+        }
+
+        /* PACKAGE SECTION */
+
+        .packages-section {
+            padding: 40px 7% 90px;
+            background: #f7fbfb;
+        }
+
+        .section-title.center {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:950px) {
+
+            .menu-btn {
+                display: flex;
+            }
+
+            .navbar {
+                padding: 14px 5%;
+            }
+
+            /* SMALL LOGO */
+
+            .logo-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+            }
+
+            .logo-icon i {
+                font-size: 18px;
+            }
+
+            .logo-text span {
+                font-size: 22px;
+            }
+
+            .logo-text small {
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+            /* SMALL NAV ICONS */
+
+            .nav-right {
+                gap: 10px;
+            }
+
+            .nav-icon,
+            .menu-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 12px;
+                font-size: 14px;
+            }
+
+            /* SMALL PROFILE */
+
+            .account-btn {
+                padding: 4px;
+                border-radius: 14px;
+            }
+
+            .account-btn img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .account-text,
+            .account-btn i {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .section-title h2 {
+                font-size: 38px;
+            }
+        }
+
+        @media(max-width:768px) {
+
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .price-row button {
+                width: 100%;
+            }
+
+            .package-info {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .logo-text span {
+                font-size: 24px;
+            }
+
+            .signin-btn {
+                display: none;
+            }
+
+        }
+
+        @media(max-width:768px) {
+
+            .navbar {
+                padding: 18px 5%;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding-top: 140px;
+            }
+
+            .hero-content h1 {
+                font-size: 34px;
+                line-height: 1.3;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .explore-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .explore-card {
+                border-radius: 24px;
+            }
+
+            .explore-card img {
+                height: 240px;
+            }
+
+            .card-content h3 {
+                font-size: 24px;
+            }
+
+            .price-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .price-row button {
+                width: 100%;
+            }
+
+            .package-info {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-text span {
+                font-size: 22px;
+            }
+
+            .account-text {
+                display: none;
+            }
+
+            .account-btn {
+                padding: 8px;
+            }
+
+            .search-box {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .search-top h2 {
+                font-size: 22px;
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .navbar {
+                padding: 14px 5%;
+            }
+
+            /* SMALL LOGO */
+
+            .logo-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+            }
+
+            .logo-icon i {
+                font-size: 18px;
+            }
+
+            .logo-text span {
+                font-size: 22px;
+            }
+
+            .logo-text small {
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+            /* SMALL NAV ICONS */
+
+            .nav-right {
+                gap: 10px;
+            }
+
+            .nav-icon,
+            .menu-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 12px;
+                font-size: 14px;
+            }
+
+            /* SMALL PROFILE */
+
+            .account-btn {
+                padding: 4px;
+                border-radius: 14px;
+            }
+
+            .account-btn img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .account-text,
+            .account-btn i {
+                display: none;
+            }
+
+            /* HERO */
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+
+            /* MOBILE MENU */
+
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 5%;
+                width: 90%;
+
+                background: rgba(18, 18, 18, 0.96);
+                backdrop-filter: blur(20px);
+
+                border-radius: 24px;
+
+                flex-direction: column;
+                text-align: center;
+
+                padding: 25px;
+                gap: 22px;
+
+                display: none;
+
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                list-style: none;
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                color: white;
+                font-size: 16px;
+                text-decoration: none;
+            }
+
+            .menu-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .back-btn {
+                top: 16px;
+                left: 16px;
+                z-index: 999;
+            }
+
+            .terms-container {
+                margin-top: 60px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-plane"></i>
+            </div>
+
+            <div class="logo-text">
+                <span>Travelo</span>
+                <small>Explore World</small>
+            </div>
+
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index2.html">Home2</a></li>
+            <li><a href="aboutus1.html">About Us</a></li>
+            <li><a href="explore1.html" class="active">Explore</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+
+            <!-- SEARCH -->
+
+            <div class="nav-icon search-icon" id="searchBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <!-- ACCOUNT -->
+
+            <div class="account-wrapper">
+
+                <div class="account-btn" id="accountToggle">
+
+                    <img id="accountImage" src="https://api.dicebear.com/7.x/notionists/svg?seed=Travel" alt="user">
+
+                    <div class="account-text">
+                        <h4 id="accountTitle">Sign In</h4>
+                        <small id="accountSubtitle">Guest</small>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+
+
+                <!-- DROPDOWN -->
+
+                <div class="account-menu" id="accountMenu">
+
+                    <a href="profile.html" class="account-item">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+
+
+                    <a href="security.html" class="account-item">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <span>Security</span>
+
+                    </a>
+
+                    <div class="account-item notification-item">
+
+                        <div class="notification-left">
+                            <i class="fa-solid fa-bell"></i>
+                            <span>Notifications</span>
+                        </div>
+
+                        <label class="switch">
+
+                            <input type="checkbox" id="notificationToggle">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                    <div class="account-item logout-item" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- MOBILE MENU -->
+
+            <div class="menu-btn" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- SEARCH POPUP -->
+
+    <div class="search-popup" id="searchPopup">
+
+        <div class="search-box">
+
+            <div class="search-top">
+
+                <h2>Search Destinations</h2>
+
+                <i class="fa-solid fa-xmark" id="closeSearch"></i>
+
+            </div>
+
+            <div class="search-input-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" id="searchInput" placeholder="Search places like Bali, Dubai, Paris...">
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Explore Luxury Destinations Worldwide
+            </h1>
+
+            <p>
+                Discover premium travel experiences, luxury resorts,
+                unforgettable adventures and world-class travel packages.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- EXPLORE SECTION -->
+
+    <section class="explore-section">
+
+        <div class="top-bar">
+
+            <div class="section-title">
+
+                <h2>Explore Destinations & Packages</h2>
+
+                <p>
+                    Discover beautiful destinations and luxury packages.
+                </p>
+
+            </div>
+
+            <!-- COMMON FILTER -->
+
+            <div class="filter-buttons">
+
+                <button class="active" data-filter="all">All</button>
+                <button data-filter="Beach">Beach</button>
+                <button data-filter="Mountain">Mountain</button>
+                <button data-filter="City">City</button>
+                <button data-filter="Adventure">Adventure</button>
+                <button id="wishlistFilter">
+                    Wishlist
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- POPULAR DESTINATIONS -->
+
+    <section class="destinations-section">
+
+        <div class="section-title center">
+
+            <h2>Popular Destinations</h2>
+
+        </div>
+
+        <div class="explore-grid" id="destinationGrid"></div>
+
+    </section>
+
+    <!-- PREMIUM PACKAGES -->
+
+    <section class="packages-section">
+
+        <div class="section-title center">
+
+            <h2>Premium Packages</h2>
+
+        </div>
+
+        <div class="explore-grid" id="exploreGrid"></div>
+
+    </section>
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div class="footer-box">
+
+                <div class="logo">
+
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+
+                    <div class="logo-text">
+                        <span>Travelo</span>
+                        <small>EXPLORE WORLD</small>
+                    </div>
+
+                </div>
+
+                <p style="margin-top:20px">
+                    Luxury travel experiences crafted for unforgettable journeys.
+                </p>
+
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://instagram.com" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://twitter.com" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+
+                    <a href="https://linkedin.com" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+                <p>
+                    <a href="index.html">Home</a>
+                </p>
+                <p>
+                    <a href="index2.html">Home2</a>
+                </p>
+                <p>
+                    <a href="aboutus1.html">About Us</a>
+                </p>
+                <p>
+                    <a href="explore1.html">Explore</a>
+                </p>
+
+                <p>
+                    <a href="booking.html">Booking</a>
+                </p>
+                <p>
+                    <a href="blog.html">Blog</a>
+                </p>
+                <p>
+                    <a href="contact.html">Contact</a>
+                </p>
+            </div>
+
+            <div class="footer-box">
+
+                <h3>Support</h3>
+                <p> <a href="faq.html">FAQs</a></p>
+
+                <p> <a href="security.html">Security</a></p>
+
+                <p><a href="privacy.html">Privacy Policy</a></p>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>Contact</h3>
+
+                <p>Email : support@travelo.com</p>
+                <p>Phone : +91 9876543210</p>
+                <p>Available 24/7</p>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Travelo. All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <script>
+
+        const destinations = [
+
+            {
+                id: 1,
+                name: 'Bali Paradise',
+                category: 'Beach',
+                rating: '4.9',
+                duration: '5 Days',
+                hotel: '5 Star Resort',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '95000',
+                places: 'Ubud, Kuta, Seminyak',
+                includes: 'Hotel + Flight + Breakfast',
+                img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Luxury beaches, premium resorts and unforgettable sunsets.'
+            },
+
+            {
+                id: 2,
+                name: 'Maldives Escape',
+                category: 'Beach',
+                rating: '5.0',
+                duration: '6 Days',
+                hotel: 'Water Villa',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '180000',
+                places: 'Male, Vaadhoo',
+                includes: 'Villa + Flight + Dinner',
+                img: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Crystal clear beaches and luxury water villas.'
+            },
+
+            {
+                id: 3,
+                name: 'Swiss Alps',
+                category: 'Mountain',
+                rating: '4.8',
+                duration: '7 Days',
+                hotel: 'Luxury Resort',
+                guests: '4 Guests',
+                flight: 'Included',
+                price: '145000',
+                places: 'Zurich, Interlaken',
+                includes: 'Hotel + Flight + Tour',
+                img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Snow mountains and premium adventure experience.'
+            },
+
+            {
+                id: 4,
+                name: 'Dubai Luxury',
+                category: 'City',
+                rating: '4.7',
+                duration: '5 Days',
+                hotel: 'Burj Resort',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '120000',
+                places: 'Burj Khalifa, Marina',
+                includes: 'Luxury Hotel + Desert Safari',
+                img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Modern skyline and premium desert adventure.'
+            },
+
+            {
+                id: 5,
+                name: 'Paris Romance',
+                category: 'City',
+                rating: '4.9',
+                duration: '5 Days',
+                hotel: 'Luxury Hotel',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '135000',
+                places: 'Eiffel Tower, Louvre',
+                includes: 'Hotel + Breakfast + Tour',
+                img: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Romantic Paris experience with luxury stay.'
+            },
+
+            {
+                id: 6,
+                name: 'Tokyo Lights',
+                category: 'City',
+                rating: '4.8',
+                duration: '6 Days',
+                hotel: 'Premium Hotel',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '160000',
+                places: 'Shibuya, Mount Fuji',
+                includes: 'Flight + Hotel + City Tour',
+                img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Experience futuristic Japan and nightlife.'
+            },
+
+            {
+                id: 7,
+                name: 'Thailand Adventure',
+                category: 'Adventure',
+                rating: '4.7',
+                duration: '5 Days',
+                hotel: 'Beach Resort',
+                guests: '3 Guests',
+                flight: 'Included',
+                price: '85000',
+                places: 'Phuket, Krabi',
+                includes: 'Resort + Island Tour',
+                img: 'https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Island hopping and beach adventures.'
+            },
+
+            {
+                id: 8,
+                name: 'Singapore Skyline',
+                category: 'City',
+                rating: '4.8',
+                duration: '4 Days',
+                hotel: 'Marina Hotel',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '110000',
+                places: 'Marina Bay, Sentosa',
+                includes: 'Hotel + Universal Studio',
+                img: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Luxury urban travel experience.'
+            },
+
+            {
+                id: 9,
+                name: 'Norway Northern Lights',
+                category: 'Mountain',
+                rating: '5.0',
+                duration: '8 Days',
+                hotel: 'Ice Hotel',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '220000',
+                places: 'Tromsø',
+                includes: 'Hotel + Aurora Tour',
+                img: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Watch magical northern lights in Norway.'
+            },
+
+            {
+                id: 10,
+                name: 'Greece Santorini',
+                category: 'Beach',
+                rating: '4.9',
+                duration: '6 Days',
+                hotel: 'Cliff Resort',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '170000',
+                places: 'Santorini',
+                includes: 'Luxury Stay + Cruise',
+                img: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Beautiful white villages and sunsets.'
+            },
+
+            {
+                id: 11,
+                name: 'Canada Nature',
+                category: 'Adventure',
+                rating: '4.8',
+                duration: '7 Days',
+                hotel: 'Luxury Cabin',
+                guests: '4 Guests',
+                flight: 'Included',
+                price: '150000',
+                places: 'Banff National Park',
+                includes: 'Cabin + Adventure Tour',
+                img: 'https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Nature exploration and mountain adventures.'
+            },
+
+            {
+                id: 12,
+                name: 'Italy Venice',
+                category: 'City',
+                rating: '4.9',
+                duration: '5 Days',
+                hotel: 'Canal Hotel',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '140000',
+                places: 'Venice, Rome',
+                includes: 'Hotel + Gondola Ride',
+                img: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1400&auto=format&fit=crop',
+                desc: 'Historic Italian architecture and romance.'
+            }
+
+        ];
+
+
+
+        /* CREATE MORE PACKAGES */
+
+        const extraPlaces = [
+
+            {
+                id: 13,
+                name: 'Paris',
+                img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 14,
+                name: 'Tokyo',
+                img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 15,
+                name: 'Singapore',
+                img: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 16,
+                name: 'Thailand',
+                img: 'https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 17,
+                name: 'Australia',
+                img: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 18,
+                name: 'Greece',
+                img: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 19,
+                name: 'Norway',
+                img: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 20,
+                name: 'Turkey',
+                img: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 21,
+                name: 'Canada',
+                img: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 22,
+                name: 'Italy',
+                img: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 23,
+                name: 'Vietnam',
+                img: 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1400&auto=format&fit=crop'
+            },
+
+            {
+                id: 24,
+                name: 'New Zealand',
+                img: 'https://images.unsplash.com/photo-1469521669194-babb45599def?q=80&w=1400&auto=format&fit=crop'
+            }
+
+        ];
+
+        extraPlaces.forEach((place, index) => {
+
+            destinations.push({
+
+                id: place.id,
+                name: place.name,
+
+
+                category:
+                    index % 4 === 0 ? 'Beach' :
+                        index % 4 === 1 ? 'Mountain' :
+                            index % 4 === 2 ? 'City' :
+                                'Adventure',
+
+                rating: '4.8',
+                duration: '6 Days',
+                hotel: '5 Star',
+                guests: '2 Guests',
+                flight: 'Included',
+                price: '98000',
+                places: place.name,
+                includes: 'Flight + Hotel + Tours',
+                tag: 'Premium',
+
+                img: place.img,
+
+                desc: `Premium luxury travel experience in ${place.name}.`
+
+            });
+
+        });
+
+        const exploreGrid =
+            document.getElementById('exploreGrid');
+        /* DESTINATION GRID */
+
+        const destinationGrid =
+            document.getElementById("destinationGrid");
+
+        /* RENDER DESTINATION CARDS */
+
+        function renderDestinationCards(data) {
+
+            destinationGrid.innerHTML = '';
+
+            const wishlist =
+                JSON.parse(localStorage.getItem("traveloWishlist")) || [];
+
+            data.forEach(place => {
+
+                const isWishlisted =
+                    wishlist.some(item => item.name === place.name);
+
+                destinationGrid.innerHTML += `
+
+        <div class="destination-card">
+
+            <img src="${place.img}" alt="${place.name}">
+
+          <div class="wishlist-btn ${isWishlisted ? 'active' : ''}"
+     data-id="${place.id}">
+     
+    <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+
+</div>
+            <div class="destination-overlay">
+
+                <h3>${place.name}</h3>
+
+                <p>${place.desc}</p>
+
+                <div class="destination-price">
+
+                    <div>
+                        <small>Starting From</small>
+                        <h2>₹${place.price}</h2>
+                    </div>
+
+                    <button class="destination-btn"
+onclick='viewDetails(${JSON.stringify(place)})'>
+    Explore
+</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+            });
+        }
+
+        /* RENDER CARDS */
+
+        function renderCards(data) {
+
+            exploreGrid.innerHTML = '';
+
+            const wishlist =
+                JSON.parse(localStorage.getItem("traveloWishlist")) || [];
+
+            data.forEach(place => {
+
+                const isWishlisted =
+                    wishlist.some(item => item.name === place.name);
+
+                exploreGrid.innerHTML += `
+
+        <div class="explore-card" data-category="${place.category}">
+
+         <div class="wishlist-btn ${isWishlisted ? 'active' : ''}"
+     data-id="${place.id}">
+     
+    <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+
+</div>
+            <img src="${place.img}">
+
+            <div class="card-content">
+
+                <div class="card-top">
+
+                    <span class="category">
+                        ${place.category}
+                    </span>
+
+                    <span class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        ${place.rating}
+                    </span>
+
+                </div>
+
+                <h3>${place.name}</h3>
+
+                <p>${place.desc}</p>
+
+                <div class="package-info">
+
+                    <div>
+                        <i class="fa-solid fa-calendar"></i>
+                        ${place.duration}
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-hotel"></i>
+                        ${place.hotel}
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-plane"></i>
+                        ${place.flight}
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-users"></i>
+                        ${place.guests}
+                    </div>
+
+                </div>
+
+                <div class="price-row">
+
+                    <div>
+                        <small>Starting From</small>
+                        <h2>₹${place.price}</h2>
+                    </div>
+
+                    <button onclick='viewDetails(${JSON.stringify(place)})'>
+                        Explore
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+            });
+        }
+        function getWishlist() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem("traveloWishlist")
+                ) || [];
+
+            } catch {
+
+                return [];
+            }
+        }
+
+        function saveWishlist(wishlist) {
+
+            localStorage.setItem(
+                "traveloWishlist",
+                JSON.stringify(wishlist)
+            );
+        }
+        /* =========================
+           SEPARATE DATA
+        ========================= */
+
+        const popularDestinations = destinations.slice(0, 12);
+
+        const premiumPackages = destinations.slice(12, 24);
+
+        /* =========================
+           INITIAL RENDER
+        ========================= */
+
+        renderDestinationCards(popularDestinations);
+
+        renderCards(premiumPackages);
+
+        /* =========================
+           COMMON FILTER
+        ========================= */
+
+        const filterButtons =
+            document.querySelectorAll(".filter-buttons button");
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                document
+                    .querySelector(".filter-buttons .active")
+                    .classList.remove("active");
+
+                button.classList.add("active");
+
+                const filter = button.dataset.filter;
+
+                /* SHOW ALL */
+
+                if (filter === "all") {
+
+                    renderDestinationCards(
+                        popularDestinations
+                    );
+
+                    renderCards(
+                        premiumPackages
+                    );
+
+                }
+
+                /* FILTER BOTH SECTIONS */
+
+                else {
+
+                    const filteredDestinations =
+                        popularDestinations.filter(
+                            item => item.category === filter
+                        );
+
+                    const filteredPackages =
+                        premiumPackages.filter(
+                            item => item.category === filter
+                        );
+
+                    renderDestinationCards(
+                        filteredDestinations
+                    );
+
+                    renderCards(
+                        filteredPackages
+                    );
+
+                }
+
+            });
+
+        });
+
+        /* VIEW DETAILS PAGE */
+
+        function viewDetails(place) {
+
+            /* SAVE SELECTED DESTINATION */
+
+            localStorage.setItem(
+                "selectedDestination",
+                JSON.stringify(place)
+            );
+
+            /* REDIRECT TO DETAILS PAGE */
+
+            window.location.href = "detail.html";
+
+        }
+
+
+
+
+        /* MOBILE MENU */
+
+        const menuBtn =
+            document.getElementById('menuBtn');
+
+        const navLinks =
+            document.getElementById('navLinks');
+
+        menuBtn.onclick = () => {
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleWishlist(placeId, button) {
+
+            let wishlist = getWishlist();
+
+            const place = destinations.find(
+                item => item.id == placeId
+            );
+
+            if (!place) return;
+
+            const exists = wishlist.some(
+                item => item.id == placeId
+            );
+
+            if (exists) {
+
+                wishlist = wishlist.filter(
+                    item => item.id != placeId
+                );
+
+                button.classList.remove("active");
+
+                button.innerHTML =
+                    `<i class="fa-regular fa-heart"></i>`;
+
+            } else {
+
+                wishlist.push(place);
+
+                button.classList.add("active");
+
+                button.innerHTML =
+                    `<i class="fa-solid fa-heart"></i>`;
+            }
+
+            saveWishlist(wishlist);
+        }
+        document.addEventListener("click", (e) => {
+
+            const wishlistBtn =
+                e.target.closest(".wishlist-btn");
+
+            if (!wishlistBtn) return;
+
+            const placeId =
+                wishlistBtn.dataset.id;
+
+            toggleWishlist(placeId, wishlistBtn);
+
+        });
+        /* SEARCH POPUP */
+
+        const searchBtn =
+            document.getElementById("searchBtn");
+
+        const searchPopup =
+            document.getElementById("searchPopup");
+
+        const closeSearch =
+            document.getElementById("closeSearch");
+
+        searchBtn.addEventListener("click", () => {
+
+            searchPopup.classList.add("active");
+
+        });
+
+        closeSearch.addEventListener("click", () => {
+
+            searchPopup.classList.remove("active");
+
+        });
+
+        /* CLOSE OUTSIDE */
+
+        searchPopup.addEventListener("click", (e) => {
+
+            if (e.target === searchPopup) {
+
+                searchPopup.classList.remove("active");
+
+            }
+
+        });
+
+        /* SEARCH FILTER */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const searchItems =
+            document.querySelectorAll(".search-item");
+
+        searchInput.addEventListener("keyup", () => {
+
+            const value =
+                searchInput.value.toLowerCase();
+
+            searchItems.forEach(item => {
+
+                const text =
+                    item.textContent.toLowerCase();
+
+                if (text.includes(value)) {
+
+                    item.style.display = "block";
+
+                } else {
+
+                    item.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+        /* ACCOUNT DROPDOWN */
+
+        const accountToggle =
+            document.getElementById("accountToggle");
+
+        const accountMenu =
+            document.getElementById("accountMenu");
+
+        /* TOGGLE MENU */
+
+        accountToggle.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            accountMenu.classList.toggle("active");
+
+        });
+
+        /* PREVENT CLOSE WHEN CLICKING INSIDE MENU */
+
+        accountMenu.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+        });
+
+        /* CLOSE WHEN CLICKING OUTSIDE */
+
+        document.addEventListener("click", () => {
+
+            accountMenu.classList.remove("active");
+
+        });
+
+        /* LOGIN CHECK */
+
+        window.onload = function () {
+
+            const isLoggedIn =
+                localStorage.getItem("traveloLoggedIn");
+
+            const user =
+                localStorage.getItem("traveloUser");
+
+            const title =
+                document.getElementById("accountTitle");
+
+            const subtitle =
+                document.getElementById("accountSubtitle");
+
+            const image =
+                document.getElementById("accountImage");
+
+            if (isLoggedIn === "true") {
+
+                title.innerHTML = "Account";
+
+                subtitle.innerHTML = user;
+
+                image.src =
+                    `https://api.dicebear.com/7.x/notionists/svg?seed=${user}`;
+
+            } else {
+
+                title.innerHTML = "Sign In";
+
+                subtitle.innerHTML = "Guest";
+
+            }
+
+        };
+
+        /* LOGOUT */
+
+        const logoutBtn =
+            document.getElementById("logoutBtn");
+
+        logoutBtn.addEventListener("click", () => {
+
+            localStorage.removeItem("traveloLoggedIn");
+
+            localStorage.removeItem("traveloUser");
+
+            window.location.reload();
+
+        });
+
+
+
+        /* NOTIFICATION TOGGLE */
+
+        const notificationToggle =
+            document.getElementById("notificationToggle");
+
+        if (localStorage.getItem("notifications") === "on") {
+
+            notificationToggle.checked = true;
+
+        }
+
+        notificationToggle.addEventListener("change", () => {
+
+            if (notificationToggle.checked) {
+
+                localStorage.setItem("notifications", "on");
+
+            } else {
+
+                localStorage.setItem("notifications", "off");
+
+            }
+
+        });
+
+
+        /* =========================
+     INITIAL DISPLAY
+  ========================= */
+
+        renderDestinationCards(popularDestinations);
+        renderCards(premiumPackages);
+
+
+        /* =========================
+           SEARCH SYSTEM
+        ========================= */
+
+
+        /* CHECK IF SEARCH INPUT EXISTS */
+
+        if (searchInput) {
+
+            searchInput.addEventListener("keydown", (e) => {
+
+                if (e.key === "Enter") {
+
+                    e.preventDefault();
+
+                    const value =
+                        searchInput.value.trim();
+
+                    if (value === "") return;
+
+                    /* CLOSE POPUP */
+
+                    searchPopup.classList.remove("active");
+
+                    /* REDIRECT TO EXPLORE PAGE */
+
+                    window.location.href =
+                        `explore1.html?search=${encodeURIComponent(value)}`;
+
+                }
+
+            });
+
+        }
+
+
+        /* =========================
+           SEARCH FROM URL
+        ========================= */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const searchValue =
+            params.get("search");
+
+        /* IF SEARCH EXISTS */
+
+        if (searchValue) {
+
+            const filtered =
+                destinations.filter(place =>
+
+                    place.name.toLowerCase()
+                        .includes(searchValue.toLowerCase())
+
+                );
+
+            /* CLEAR OLD CARDS */
+
+            destinationGrid.innerHTML = "";
+            exploreGrid.innerHTML = "";
+
+            /* SHOW FILTERED CARDS */
+
+            renderDestinationCards(filtered);
+            renderCards(filtered);
+
+        }
+
+
+        const wishlistBtn =
+            document.getElementById("wishlistFilter");
+
+        let wishlistActive = false;
+
+        wishlistBtn.addEventListener("click", () => {
+
+            wishlistActive = !wishlistActive;
+
+            wishlistBtn.classList.toggle("active");
+
+            /* GET WISHLIST */
+
+            const wishlist =
+                JSON.parse(
+                    localStorage.getItem("traveloWishlist")
+                ) || [];
+
+            /* SHOW ONLY WISHLIST */
+
+            if (wishlistActive) {
+
+                const filteredDestinations =
+                    popularDestinations.filter(place =>
+
+                        wishlist.some(
+                            item => item.id === place.id
+                        )
+
+                    );
+
+                const filteredPackages =
+                    premiumPackages.filter(place =>
+
+                        wishlist.some(
+                            item => item.id === place.id
+                        )
+
+                    );
+
+                renderDestinationCards(filteredDestinations);
+
+                renderCards(filteredPackages);
+
+            }
+
+            /* SHOW ALL */
+
+            else {
+
+                renderDestinationCards(popularDestinations);
+
+                renderCards(premiumPackages);
+
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

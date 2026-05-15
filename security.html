@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Travelo - Security</title>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(rgba(4, 18, 24, 0.82),
+                    rgba(4, 18, 24, 0.88)),
+                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        /* GLOW */
+
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+        }
+
+        .glow1 {
+            width: 320px;
+            height: 320px;
+            background: #00c2a8;
+            top: -100px;
+            left: -100px;
+            opacity: 0.4;
+        }
+
+        .glow2 {
+            width: 280px;
+            height: 280px;
+            background: #007f73;
+            bottom: -100px;
+            right: -100px;
+            opacity: 0.4;
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn {
+
+            position: absolute;
+
+            top: 30px;
+            left: 30px;
+
+            width: 50px;
+            height: 50px;
+
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(12px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            transition: 0.3s;
+
+            z-index: 5;
+        }
+
+        .back-btn:hover {
+
+            background: #00c2a8;
+
+            transform: translateY(-3px);
+        }
+
+        /* MAIN */
+
+        .security-container {
+
+            width: 100%;
+            max-width: 950px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(20px);
+
+            border-radius: 35px;
+
+            padding: 50px;
+
+            color: white;
+
+            position: relative;
+
+            z-index: 2;
+
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* LOGO */
+
+        .logo {
+
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 35px;
+        }
+
+        .logo-icon {
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 18px;
+
+            background: linear-gradient(135deg, #0F766E, #14B8A6);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transform: rotate(-8deg);
+
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
+        }
+
+        .logo-icon i {
+
+            color: white;
+
+            font-size: 24px;
+
+            transform: rotate(8deg);
+        }
+
+        .logo-text span {
+
+            font-size: 32px;
+
+            font-weight: 800;
+        }
+
+        .logo-text small {
+
+            display: block;
+
+            color: #bff7f2;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        /* TITLE */
+
+        .security-title h1 {
+
+            font-size: 50px;
+
+            line-height: 1.1;
+
+            margin-bottom: 12px;
+        }
+
+        .security-title p {
+
+            color: #d5f7f3;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+        }
+
+        /* SECURITY BOX */
+
+        .security-box {
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            max-height: 340px;
+
+            overflow-y: auto;
+        }
+
+        .security-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .security-box::-webkit-scrollbar-thumb {
+
+            background: #00c2a8;
+
+            border-radius: 10px;
+        }
+
+        .security-item {
+
+            display: flex;
+
+            gap: 18px;
+
+            margin-bottom: 28px;
+        }
+
+        .security-icon {
+
+            min-width: 55px;
+            height: 55px;
+
+            border-radius: 18px;
+
+            background: rgba(0, 194, 168, 0.12);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #00c2a8;
+
+            font-size: 22px;
+        }
+
+        .security-content h3 {
+
+            margin-bottom: 10px;
+
+            font-size: 20px;
+        }
+
+        .security-content p {
+
+            color: #d9f7f3;
+
+            line-height: 1.8;
+
+            font-size: 15px;
+        }
+
+        /* BUTTON */
+
+        .button-group {
+
+            margin-top: 35px;
+        }
+
+        .security-btn {
+
+            width: 100%;
+
+            height: 58px;
+
+            border: none;
+
+            border-radius: 18px;
+
+            background: linear-gradient(135deg, #00c2a8, #007f73);
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow: 0 12px 24px rgba(0, 194, 168, 0.25);
+        }
+
+        .security-btn:hover {
+
+            transform: translateY(-4px);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            body {
+                padding: 0;
+            }
+
+            .back-btn {
+
+                top: 14px;
+                left: 14px;
+
+                width: 40px;
+                height: 40px;
+
+                font-size: 14px;
+            }
+
+            .security-container {
+
+                width: calc(100% - 24px);
+
+                height: calc(100vh - 24px);
+
+                padding: 70px 16px 18px;
+
+                border-radius: 24px;
+
+                overflow-y: auto;
+            }
+
+            .logo {
+
+                margin-bottom: 18px;
+
+                gap: 10px;
+            }
+
+            .logo-icon {
+
+                width: 44px;
+                height: 44px;
+            }
+
+            .logo-icon i {
+                font-size: 18px;
+            }
+
+            .logo-text span {
+                font-size: 24px;
+            }
+
+            .security-title h1 {
+                font-size: 32px;
+            }
+
+            .security-title p {
+
+                font-size: 13px;
+
+                margin-bottom: 18px;
+            }
+
+            .security-box {
+
+                padding: 18px;
+
+                border-radius: 18px;
+            }
+
+            .security-item {
+
+                gap: 14px;
+            }
+
+            .security-icon {
+
+                min-width: 46px;
+                height: 46px;
+
+                font-size: 18px;
+            }
+
+            .security-content h3 {
+
+                font-size: 16px;
+            }
+
+            .security-content p {
+
+                font-size: 13px;
+
+                line-height: 1.7;
+            }
+        }
+
+        @media(max-width:768px) {
+
+            body {
+                overflow: hidden;
+            }
+
+            .security-container {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+        }
+
+        /* FIX MOBILE SCROLL ISSUE */
+
+        html,
+        body {
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+        }
+
+        body {
+
+            position: fixed;
+
+            inset: 0;
+
+        }
+
+        /* MAIN CONTAINER */
+
+        .security-container {
+
+            width: calc(100% - 24px);
+
+            height: calc(100vh - 24px);
+
+            overflow: hidden;
+
+        }
+
+        /* INTERNAL CONTENT */
+
+        .security-box {
+
+            overflow-y: auto;
+
+            overflow-x: hidden;
+
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            html,
+            body {
+
+                overflow: hidden;
+
+                position: fixed;
+
+                width: 100%;
+                height: 100%;
+
+            }
+
+            .security-container {
+
+                width: calc(100% - 24px);
+
+                height: calc(100vh - 24px);
+
+                overflow: hidden;
+
+            }
+
+            .security-box {
+
+                flex: 1;
+
+                overflow-y: auto;
+
+                overflow-x: hidden;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <a href="javascript:history.back()" class="back-btn">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <div class="security-container">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-plane"></i>
+            </div>
+
+            <div class="logo-text">
+                <span>Travelo</span>
+                <small>Explore World</small>
+            </div>
+
+        </div>
+
+        <!-- TITLE -->
+
+        <div class="security-title">
+
+            <h1>
+                Security Center
+            </h1>
+
+            <p>
+                Your safety and privacy are our highest priorities.
+                Learn how Travelo protects your personal data and bookings.
+            </p>
+
+        </div>
+
+        <!-- SECURITY -->
+
+        <div class="security-box">
+
+            <div class="security-item">
+
+                <div class="security-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div class="security-content">
+
+                    <h3>Secure Encryption</h3>
+
+                    <p>
+                        Travelo uses advanced encryption technology to keep
+                        your data and transactions completely secure.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="security-item">
+
+                <div class="security-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="security-content">
+
+                    <h3>Protected Accounts</h3>
+
+                    <p>
+                        Your account credentials and personal information
+                        are safely protected with modern security systems.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="security-item">
+
+                <div class="security-icon">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+
+                <div class="security-content">
+
+                    <h3>Safe Payments</h3>
+
+                    <p>
+                        All payments are securely processed through trusted
+                        payment gateways and protected networks.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="security-item">
+
+                <div class="security-icon">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+
+                <div class="security-content">
+
+                    <h3>Privacy Protection</h3>
+
+                    <p>
+                        Travelo never shares your personal data without your
+                        permission and follows strict privacy standards.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <div class="button-group">
+
+            <button class="security-btn" onclick="goBack()">
+
+                <i class="fa-solid fa-check"></i>
+
+                I Understand
+
+            </button>
+
+        </div>
+
+        <script>
+
+            function goBack() {
+                window.history.back();
+            }
+
+        </script>
+
+</body>
+
+</html>

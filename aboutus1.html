@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelo - About Us</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #F6FBFB;
+            overflow-x: hidden;
+            color: #121212;
+            width: 100%;
+        }
+
+        :root {
+            --primary: #0F766E;
+            --secondary: #134E4A;
+            --light: #ECFEFF;
+            --white: #ffffff;
+            --dark: #121212;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #0F766E, #14B8A6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
+            transition: 0.4s;
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+            transform: rotate(8deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .logo-text small {
+            font-size: 12px;
+            color: #bff7f2;
+            letter-spacing: 3px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(0deg) scale(1.08);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            transition: 0.35s;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-icon:hover {
+            background: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .account-wrapper {
+            position: relative;
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .account-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .account-btn img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .account-text h4 {
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .account-text small {
+            color: #bff7f2;
+            font-size: 11px;
+        }
+
+        .account-btn i {
+            color: white;
+            font-size: 12px;
+        }
+
+
+        .account-menu {
+            position: absolute;
+            top: 72px;
+            right: 0;
+            width: 240px;
+            max-width: calc(100vw - 20px);
+
+            background: rgba(18, 18, 18, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 24px;
+            padding: 12px;
+
+            backdrop-filter: blur(20px);
+
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+
+            z-index: 9999;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .account-menu.active {
+            display: flex;
+        }
+
+        .account-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 14px 16px;
+            border-radius: 16px;
+
+            color: white;
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .account-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .logout-item {
+            color: #ffb4b4;
+        }
+
+        .menu-btn {
+            display: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+        }
+
+
+        /* SEARCH POPUP */
+
+        .search-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(10px);
+            z-index: 30000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.35s ease;
+        }
+
+        .search-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 720px;
+
+            background: white;
+
+            border-radius: 35px;
+
+            padding: 35px;
+
+            transform: translateY(40px) scale(.96);
+
+            transition: 0.35s ease;
+
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-popup.active .search-box {
+            transform: translateY(0) scale(1);
+        }
+
+        .search-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 28px;
+        }
+
+        .search-top h2 {
+            font-size: 32px;
+            color: var(--dark);
+        }
+
+        .search-top i {
+            width: 52px;
+            height: 52px;
+
+            background: #f2f2f2;
+
+            border-radius: 16px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .search-top i:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .search-input-box {
+            width: 100%;
+            height: 72px;
+
+            background: #f7f7f7;
+
+            border-radius: 22px;
+
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 16px;
+
+            border: 2px solid transparent;
+
+            transition: 0.3s;
+        }
+
+        .search-input-box:focus-within {
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .search-input-box i {
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        .search-input-box input {
+            width: 100%;
+
+            border: none;
+            background: transparent;
+            outline: none;
+
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .search-input-box input::placeholder {
+            color: #888;
+        }
+
+        .search-results {
+            margin-top: 30px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 14px;
+        }
+
+        .search-item {
+            padding: 14px 24px;
+
+            background: var(--light);
+
+            border-radius: 50px;
+
+            color: var(--primary);
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .search-item:hover {
+            background: var(--primary);
+            color: white;
+
+            transform: translateY(-3px);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .search-box {
+                padding: 24px;
+                border-radius: 28px;
+            }
+
+            .search-top h2 {
+                font-size: 24px;
+            }
+
+            .search-top i {
+                width: 44px;
+                height: 44px;
+                border-radius: 14px;
+            }
+
+            .search-input-box {
+                height: 60px;
+                border-radius: 18px;
+                padding: 0 18px;
+            }
+
+            .search-input-box input {
+                font-size: 15px;
+            }
+
+            .search-results {
+                gap: 10px;
+            }
+
+            .search-item {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+        }
+
+        .no-results {
+            color: #bbb;
+            text-align: center;
+            padding: 18px;
+            font-size: 14px;
+        }
+
+        /* HERO */
+
+        .about-hero {
+            min-height: 75vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 8% 80px;
+        }
+
+        .about-hero-content {
+            max-width: 900px;
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-size: 78px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .about-hero p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #f0f0f0;
+        }
+
+        /* COMMON SECTION */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 50px;
+            margin-bottom: 18px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        /* COMPANY STORY */
+
+        .story-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-content h3 {
+            font-size: 42px;
+            margin-bottom: 25px;
+        }
+
+        .story-content p {
+            line-height: 2;
+            color: #666;
+            margin-bottom: 18px;
+        }
+
+        /* MISSION VISION */
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.4s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            background: var(--primary);
+            color: white;
+        }
+
+        .mission-card:hover p {
+            color: #e9fdfb;
+        }
+
+        .mission-card i {
+            font-size: 52px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .mission-card:hover i {
+            color: white;
+        }
+
+        .mission-card h3 {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .mission-card p {
+            color: #666;
+            line-height: 1.9;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            background: var(--light);
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-box {
+            background: white;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-box h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .timeline-box p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* TEAM */
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.4s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .team-content {
+            padding: 30px;
+        }
+
+        .team-content h3 {
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* TESTIMONIALS */
+
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .user {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .user img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-card p {
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #121212;
+            color: white;
+            padding: 90px 8% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer-box p {
+            color: #aaa;
+            line-height: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons i {
+            width: 45px;
+            height: 45px;
+            background: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: var(--primary);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #2b2b2b;
+            padding-top: 25px;
+            color: #aaa;
+        }
+
+        /* NOTIFICATION TOGGLE */
+
+        .notification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .notification-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: white;
+        }
+
+        /* SMALL PREMIUM SWITCH */
+
+        .switch {
+            position: relative;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all .35s ease;
+        }
+
+        /* GLOW EFFECT */
+
+        .slider::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg,
+                    rgba(20, 184, 166, 0.35),
+                    rgba(15, 118, 110, 0.1));
+            opacity: 0;
+            transition: .35s ease;
+        }
+
+        /* SWITCH CIRCLE */
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background: white;
+            transition: all .35s cubic-bezier(.68, -0.55, .27, 1.55);
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.25),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ACTIVE */
+
+        .switch input:checked+.slider {
+            background: linear-gradient(135deg, #14B8A6, #0F766E);
+            box-shadow: 0 0 16px rgba(20, 184, 166, 0.45);
+        }
+
+        .switch input:checked+.slider::after {
+            opacity: 1;
+        }
+
+        .switch input:checked+.slider::before {
+            transform: translate(22px, -50%);
+        }
+
+        /* HOVER */
+
+        .switch:hover .slider {
+            transform: scale(1.03);
+        }
+
+        .footer-box a {
+            text-decoration: none;
+            color: #aaa;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .footer-box a:hover {
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .social-icons a {
+            text-decoration: none;
+        }
+
+        .social-icons i {
+            width: 45px;
+            height: 45px;
+            background: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        .social-icons i:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* =========================================
+FINAL MOBILE FIX - CLEAN VERSION
+========================================= */
+
+        @media screen and (max-width:768px) {
+
+            html,
+            body {
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            section {
+                padding: 70px 16px;
+            }
+
+            /* NAVBAR */
+
+            .navbar {
+                padding: 14px 16px;
+                height: 78px;
+                overflow: visible;
+            }
+
+            .logo {
+                gap: 8px;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+            }
+
+            .logo-icon i {
+                font-size: 16px;
+            }
+
+            .logo-text span {
+                font-size: 20px;
+            }
+
+            .logo-text small {
+                font-size: 7px;
+                letter-spacing: 1px;
+            }
+
+            /* NAV RIGHT */
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .nav-icon,
+            .menu-btn {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+
+                border-radius: 12px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-icon i,
+            .menu-btn i {
+                font-size: 14px;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+
+            /* ACCOUNT */
+
+            .account-btn {
+                padding: 4px;
+                border-radius: 12px;
+            }
+
+            .account-btn img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .account-text,
+            .account-btn i {
+                display: none;
+            }
+
+            /* HAMBURGER DROPDOWN */
+
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                left: 50%;
+                transform: translateX(-50%);
+
+                width: calc(100% - 32px);
+
+                background: rgba(18, 18, 18, 0.96);
+                backdrop-filter: blur(20px);
+
+                border-radius: 22px;
+
+                padding: 8px;
+
+                display: none;
+                flex-direction: column;
+                align-items: center;
+
+                gap: 12px;
+
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 8px 10px;
+                min-height: 32px;
+                line-height: 1;
+            }
+
+            /* HERO */
+
+            .about-hero h1 {
+                font-size: 38px;
+                line-height: 1.2;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+
+            /* STORY SECTION */
+
+            .story-section {
+                padding: 70px 16px;
+            }
+
+            .premium-story-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .story-visual {
+                width: 100%;
+                position: relative;
+            }
+
+            .story-main-image {
+                width: 100%;
+                height: 320px;
+                border-radius: 22px;
+                overflow: hidden;
+            }
+
+            .story-main-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* FLOATING CARDS */
+
+            .floating-card {
+                position: absolute;
+                z-index: 10;
+            }
+
+            .card-one {
+                top: 12px;
+                left: 12px;
+
+                padding: 12px;
+
+                border-radius: 14px;
+
+                max-width: 115px;
+            }
+
+            .card-one h3 {
+                font-size: 22px;
+            }
+
+            .card-one p {
+                font-size: 10px;
+            }
+
+            .card-two {
+                right: 12px;
+                bottom: 65px;
+
+                width: 150px;
+
+                padding: 10px;
+
+                border-radius: 14px;
+
+                gap: 10px;
+            }
+
+            .card-two i {
+                width: 34px;
+                height: 34px;
+
+                font-size: 13px;
+
+                border-radius: 10px;
+            }
+
+            .card-two h4 {
+                font-size: 11px;
+                line-height: 1.3;
+            }
+
+            .card-two span {
+                font-size: 9px;
+            }
+
+            .experience-badge {
+                left: 12px;
+                bottom: -20px;
+
+                width: 140px;
+
+                padding: 12px;
+
+                border-radius: 16px;
+            }
+
+            .experience-badge span {
+                font-size: 24px;
+            }
+
+            .experience-badge p {
+                font-size: 10px;
+                line-height: 1.4;
+            }
+
+            /* STORY CONTENT */
+
+            .premium-story-content h3 {
+                font-size: 26px;
+                line-height: 1.3;
+
+                margin-bottom: 16px;
+            }
+
+            .premium-story-content p {
+                font-size: 13px;
+                line-height: 1.8;
+
+                margin-bottom: 18px;
+            }
+
+            .story-tag {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            /* HIGHLIGHTS */
+
+            .story-highlight-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .highlight-box {
+                padding: 16px;
+                border-radius: 18px;
+
+                gap: 12px;
+            }
+
+            .highlight-box i {
+                width: 42px;
+                height: 42px;
+
+                font-size: 16px;
+
+                border-radius: 12px;
+            }
+
+            .highlight-box h4 {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .highlight-box p {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+
+            /* STATS */
+
+            .premium-story-stats {
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 14px;
+
+                margin-top: 70px;
+            }
+
+            .premium-stat-card {
+                min-height: 120px;
+
+                padding: 16px;
+
+                border-radius: 18px;
+            }
+
+            .premium-stat-card h2 {
+                font-size: 26px;
+            }
+
+            .premium-stat-card p {
+                font-size: 12px;
+            }
+
+            /* TIMELINE */
+
+            .timeline-container::before {
+                left: 18px;
+            }
+
+            .timeline-item {
+                width: 100%;
+
+                padding-left: 55px;
+                padding-right: 0;
+
+                left: 0 !important;
+
+                text-align: left !important;
+            }
+
+            /* FOOTER */
+
+            .footer-grid {
+                gap: 28px;
+            }
+
+            .footer-box a {
+                text-decoration: none;
+                color: #aaa;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-plane"></i>
+            </div>
+
+            <div class="logo-text">
+                <span>Travelo</span>
+                <small>Explore World</small>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index2.html">Home 2</a></li>
+            <li><a href="aboutus1.html" class="active">About Us</a></li>
+            <li><a href="explore1.html">Explore</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+
+            <div class="nav-icon search-icon" id="searchBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="account-wrapper">
+
+                <div class="account-btn" id="accountToggle">
+
+                    <img id="accountImage" src="https://api.dicebear.com/7.x/notionists/svg?seed=Travel" alt="user">
+
+                    <div class="account-text">
+                        <h4 id="accountTitle">Sign In</h4>
+                        <small id="accountSubtitle">Guest</small>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+                <div class="account-menu" id="accountMenu">
+
+                    <a href="profile.html" class="account-item">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+
+
+
+                    <a href="security.html" class="account-item">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <span>Security</span>
+
+                    </a>
+                    <div class="account-item notification-item">
+
+                        <div class="notification-left">
+                            <i class="fa-solid fa-bell"></i>
+                            <span>Notifications</span>
+                        </div>
+
+                        <label class="switch">
+
+                            <input type="checkbox" id="notificationToggle">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                    <div class="account-item logout-item" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- SEARCH POPUP -->
+
+    <div class="search-popup" id="searchPopup">
+
+        <div class="search-box">
+
+            <div class="search-top">
+
+                <h2>Search Destinations</h2>
+
+                <i class="fa-solid fa-xmark" id="closeSearch"></i>
+
+            </div>
+
+            <div class="search-input-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" id="searchInput" placeholder="Search Bali, Dubai, Paris...">
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <!-- HERO -->
+
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>About Travelo</h1>
+            <p>
+                Creating unforgettable luxury travel experiences for modern travelers around the world.
+                From tropical escapes to mountain adventures, Travelo turns dream vacations into reality.
+            </p>
+        </div>
+    </section>
+
+    <!-- COMPANY STORY -->
+
+    <section class="story-section">
+
+        <div class="section-title">
+            <span class="small-title">OUR JOURNEY</span>
+            <h2>The Story Behind Travelo</h2>
+            <p>
+                Crafted with passion, built for explorers and designed for unforgettable luxury experiences.
+            </p>
+        </div>
+
+        <div class="premium-story-wrapper">
+
+            <!-- LEFT VISUAL -->
+
+            <div class="story-visual">
+
+                <div class="story-main-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=1400&auto=format&fit=crop">
+                </div>
+
+                <div class="floating-card card-one">
+                    <h3>15K+</h3>
+                    <p>Luxury Travelers</p>
+                </div>
+
+                <div class="floating-card card-two">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <div>
+                        <h4>120+ Destinations</h4>
+                        <span>Worldwide Coverage</span>
+                    </div>
+                </div>
+
+                <div class="experience-badge">
+                    <span>10+</span>
+                    <p>Years of Luxury Travel Experience</p>
+                </div>
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+
+            <div class="story-content premium-story-content">
+
+                <div class="story-tag">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <span>Luxury Travel Redefined</span>
+                </div>
+
+                <h3>
+                    We Don’t Just Plan Trips — We Create Extraordinary Memories.
+                </h3>
+
+                <p>
+                    Travelo was founded with a bold vision: to transform ordinary travel into extraordinary luxury
+                    experiences.
+                    What started as a small passion project between travel enthusiasts quickly evolved into a
+                    premium
+                    travel platform trusted by thousands of explorers worldwide.
+                </p>
+
+                <p>
+                    Our founders believed that modern travelers deserved more than just hotel bookings and ticket
+                    reservations.
+                    They wanted immersive journeys, seamless planning and unforgettable moments carefully designed
+                    around comfort, elegance and adventure.
+                </p>
+
+                <div class="story-highlight-grid">
+
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-gem"></i>
+                        <div>
+                            <h4>Premium Experiences</h4>
+                            <p>
+                                Handpicked luxury destinations, resorts and personalized travel services.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        <div>
+                            <h4>Trusted By Travelers</h4>
+                            <p>
+                                Thousands of satisfied travelers trust Travelo for safe and unforgettable vacations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-star"></i>
+                        <div>
+                            <h4>Luxury Partnerships</h4>
+                            <p>
+                                Collaborations with top resorts, airlines and travel experts across the globe.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-route"></i>
+                        <div>
+                            <h4>Tailored Journeys</h4>
+                            <p>
+                                Customized itineraries designed for every traveler’s dream destination.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p>
+                    Over the years, Travelo has expanded from a boutique travel concept into a global luxury travel
+                    brand.
+                    From tropical island escapes and romantic honeymoon packages to thrilling adventure tours and
+                    private luxury retreats,
+                    every experience we create is built around elegance, convenience and unforgettable storytelling.
+                </p>
+
+                <p>
+                    Today, our mission remains stronger than ever — to inspire people to discover the world with
+                    confidence,
+                    comfort and excitement. Every destination we offer reflects our passion for quality, luxury and
+                    meaningful exploration.
+                </p>
+
+
+
+            </div>
+
+        </div>
+
+        <!-- PREMIUM STATS -->
+
+        <div class="premium-story-stats">
+
+            <div class="premium-stat-card">
+                <h2>15K+</h2>
+                <p>Happy Travelers</p>
+            </div>
+
+            <div class="premium-stat-card">
+                <h2>500+</h2>
+                <p>Luxury Hotels</p>
+            </div>
+
+            <div class="premium-stat-card">
+                <h2>120+</h2>
+                <p>Destinations</p>
+            </div>
+
+            <div class="premium-stat-card">
+                <h2>4.9★</h2>
+                <p>Customer Satisfaction</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <style>
+        .story-section {
+            padding: 120px 8%;
+        }
+
+        .premium-story-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 70px;
+            align-items: center;
+        }
+
+        .premium-story-content {
+            order: 1;
+        }
+
+        .story-visual {
+            order: 2;
+        }
+
+        .story-visual {
+            position: relative;
+        }
+
+        .story-main-image {
+            overflow: hidden;
+            border-radius: 36px;
+            height: 650px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .story-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-one {
+            top: 30px;
+            left: -30px;
+        }
+
+        .card-one h3 {
+            font-size: 38px;
+            color: var(--primary);
+        }
+
+        .card-two {
+            right: -20px;
+            bottom: 120px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .card-two i {
+            width: 55px;
+            height: 55px;
+            border-radius: 18px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -30px;
+            left: 40px;
+            background: linear-gradient(135deg, var(--primary), #14B8A6);
+            color: white;
+            padding: 28px;
+            border-radius: 28px;
+            width: 260px;
+            box-shadow: 0 15px 40px rgba(15, 118, 110, 0.35);
+        }
+
+        .experience-badge span {
+            font-size: 48px;
+            font-weight: 800;
+        }
+
+        .story-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--light);
+            padding: 12px 22px;
+            border-radius: 40px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .premium-story-content h3 {
+            font-size: 52px;
+            word-break: break-word;
+            line-height: 1.2;
+            margin-bottom: 28px;
+        }
+
+        .premium-story-content p {
+            line-height: 2;
+            color: #555;
+            margin-bottom: 24px;
+        }
+
+        .story-highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            margin: 40px 0;
+        }
+
+        .highlight-box {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            display: flex;
+            gap: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.4s;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .highlight-box i {
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            background: var(--light);
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .highlight-box h4 {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .story-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .story-signature h4 {
+            font-size: 28px;
+        }
+
+        .story-signature span {
+            color: #777;
+        }
+
+        .premium-story-stats {
+            margin-top: 120px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .premium-stat-card {
+            background: white;
+            border-radius: 24px;
+            padding: 22px 18px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: 0.4s;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 170px;
+        }
+
+        .premium-stat-card:hover {
+            transform: translateY(-10px);
+            background: var(--primary);
+            color: white;
+        }
+
+        .premium-stat-card h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .premium-stat-card:hover h2 {
+            color: white;
+        }
+
+        .premium-stat-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 140px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .premium-stat-card {
+                min-height: 140px;
+                padding: 18px 14px;
+            }
+
+            .premium-stat-card h2 {
+                font-size: 28px;
+            }
+
+            .premium-stat-card p {
+                font-size: 13px;
+            }
+        }
+
+        @media(max-width:768px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            footer {
+                margin-bottom: 0;
+                padding-bottom: 25px;
+            }
+
+            .story-visual {
+                order: 2;
+            }
+
+            .story-section {
+                padding: 90px 5%;
+            }
+
+            .story-main-image {
+                height: 420px;
+                border-radius: 28px;
+            }
+
+            .card-one {
+                left: 12px;
+                top: 12px;
+                padding: 16px 18px;
+            }
+
+            .card-two {
+                right: 12px;
+                bottom: 85px;
+                max-width: 220px;
+                padding: 14px;
+            }
+
+            .experience-badge {
+                left: 16px;
+                width: 200px;
+                padding: 18px;
+                bottom: -20px;
+            }
+
+            .premium-story-content h3 {
+                font-size: 32px;
+                line-height: 1.3;
+            }
+        }
+
+        .story-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .story-highlight-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .highlight-box {
+            padding: 22px;
+        }
+
+        .premium-story-stats {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .premium-stat-card {
+            padding: 28px 20px;
+        }
+
+        .premium-stat-card h2 {
+            font-size: 34px;
+        }
+
+        .footer-grid {
+            gap: 30px;
+        }
+
+        .copyright {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+    </style>
+
+    <!-- MISSION & VISION -->
+
+    <section>
+
+        <div class="section-title">
+            <h2>Mission & Vision</h2>
+            <p>Our purpose and future goals that drive everything we do.</p>
+        </div>
+
+        <div class="mission-grid">
+
+            <div class="mission-card">
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>Our Mission</h3>
+                <p>
+                    To provide seamless luxury travel experiences with premium destinations,
+                    exceptional customer service and unforgettable adventures.
+                </p>
+            </div>
+
+            <div class="mission-card">
+                <i class="fa-solid fa-eye"></i>
+                <h3>Our Vision</h3>
+                <p>
+                    To become the world's most trusted luxury travel platform by inspiring people
+                    to explore the world with confidence and excitement.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TIMELINE -->
+
+    <section class="timeline">
+
+        <div class="section-title">
+            <h2>Our Journey</h2>
+            <p>Major milestones and achievements throughout our journey.</p>
+        </div>
+
+        <div class="timeline-container">
+
+            <div class="timeline-item">
+                <div class="timeline-box">
+                    <h3>2019 - Founded</h3>
+                    <p>
+                        Travelo started as a small travel startup focused on premium travel experiences.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-box">
+                    <h3>2021 - 10K Travelers</h3>
+                    <p>
+                        We successfully helped over 10,000 travelers explore luxury destinations.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-box">
+                    <h3>2023 - Global Expansion</h3>
+                    <p>
+                        Travelo expanded services internationally with new premium destination packages.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-box">
+                    <h3>2026 - Trusted Brand</h3>
+                    <p>
+                        Today, Travelo is trusted by thousands of travelers across the world.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TEAM -->
+
+    <section>
+
+        <div class="section-title">
+            <h2>Meet Our Team</h2>
+            <p>The passionate people behind Travelo's luxury travel experiences.</p>
+        </div>
+
+        <div class="team-grid">
+
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg">
+
+                <div class="team-content">
+                    <h3>David Miller</h3>
+                    <div class="team-role">Founder & CEO</div>
+                    <p>
+                        David leads Travelo with a passion for innovation, luxury travel and unforgettable
+                        experiences.
+                    </p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+                <div class="team-content">
+                    <h3>Sophia Lee</h3>
+                    <div class="team-role">Travel Director</div>
+                    <p>
+                        Sophia designs premium travel packages and luxury destination experiences worldwide.
+                    </p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+                <div class="team-content">
+                    <h3>Daniel Carter</h3>
+                    <div class="team-role">Operations Manager</div>
+                    <p>
+                        Daniel ensures smooth travel coordination and world-class customer support.
+                    </p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg">
+
+                <div class="team-content">
+                    <h3>Emma Wilson</h3>
+                    <div class="team-role">Customer Experience</div>
+                    <p>
+                        Emma focuses on creating memorable experiences and personalized traveler support.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TESTIMONIALS -->
+
+    <section class="testimonials">
+
+        <div class="section-title">
+            <h2>What Our Clients Say</h2>
+            <p>Real experiences from happy travelers around the world.</p>
+        </div>
+
+        <div class="testimonial-grid">
+
+            <div class="testimonial-card">
+
+                <div class="user">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg">
+                    <div>
+                        <h3>Olivia</h3>
+                        <span>⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <p>
+                    Travelo gave us the most luxurious and stress-free vacation experience we've ever had.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+
+                <div class="user">
+                    <img src="https://randomuser.me/api/portraits/men/41.jpg">
+                    <div>
+                        <h3>James</h3>
+                        <span>⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <p>
+                    Everything from booking to hotel experiences was perfectly organized and premium.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+
+                <div class="user">
+                    <img src="https://randomuser.me/api/portraits/women/12.jpg">
+                    <div>
+                        <h3>Charlotte</h3>
+                        <span>⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <p>
+                    Highly recommended for anyone looking for luxury travel experiences and excellent support.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div class="footer-box">
+
+                <div class="logo footer-logo">
+
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+
+                    <div class="logo-text">
+                        <span>Travelo</span>
+                        <small>Explore World</small>
+                    </div>
+
+                </div>
+
+                <p>
+                    Premium travel booking platform designed for modern travelers and adventure lovers.
+                </p>
+
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://instagram.com" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://twitter.com" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+
+                    <a href="https://linkedin.com" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <p>
+                    <a href="index.html">Home</a>
+                </p>
+                <p><a href="index2.html">Home 2</a></p>
+                <p>
+                    <a href="aboutus1.html">About Us</a>
+                </p>
+                <p>
+                    <a href="explore1.html">Explore</a>
+                </p>
+
+                <p>
+                    <a href="booking.html">Booking</a>
+                </p>
+                <p>
+                    <a href="blog.html">Blog</a>
+                </p>
+                <p>
+                    <a href="contact.html">Contact</a>
+                </p>
+
+            </div>
+
+            <div class="footer-box">
+                <h3>Support</h3>
+                <p> <a href="faq.html">FAQs</a></p>
+
+                <p> <a href="security.html">Security</a></p>
+
+                <p><a href="privacy.html">Privacy Policy</a></p>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p>Email: support@travelo.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Chennai, India</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Travelo. All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            /* SEARCH POPUP */
+
+            const searchBtn =
+                document.getElementById("searchBtn");
+
+            const searchPopup =
+                document.getElementById("searchPopup");
+
+            const closeSearch =
+                document.getElementById("closeSearch");
+
+            const searchInput =
+                document.getElementById("searchInput");
+
+            const searchResults =
+                document.getElementById("searchResults");
+
+            if (searchBtn && searchPopup) {
+
+                searchBtn.addEventListener("click", () => {
+
+                    searchPopup.classList.add("active");
+
+                    setTimeout(() => {
+
+                        if (searchInput) {
+                            searchInput.focus();
+                        }
+
+                    }, 100);
+
+                });
+
+            }
+
+            if (closeSearch && searchPopup) {
+
+                closeSearch.addEventListener("click", () => {
+                    searchPopup.classList.remove("active");
+                });
+
+            }
+
+            if (searchPopup) {
+
+                searchPopup.addEventListener("click", (e) => {
+
+                    if (e.target === searchPopup) {
+                        searchPopup.classList.remove("active");
+                    }
+
+                });
+
+            }
+
+            /* SEARCH SYSTEM */
+
+            const destinations = [
+                "Bali",
+                "Dubai",
+                "Paris",
+                "Maldives",
+                "Tokyo",
+                "Singapore",
+                "Switzerland",
+                "New York",
+                "London",
+                "Thailand",
+                "Rome",
+                "Istanbul",
+                "Barcelona",
+                "Santorini"
+            ];
+
+            function renderResults(items) {
+
+                if (!searchResults) return;
+
+                searchResults.innerHTML = "";
+
+                if (items.length === 0) {
+
+                    searchResults.innerHTML = `
+                <div class="no-results">
+                    No destinations found.
+                </div>
+            `;
+
+                    return;
+                }
+
+                items.forEach(place => {
+
+                    const div = document.createElement("div");
+
+                    div.className = "search-item";
+                    div.textContent = place;
+
+                    div.addEventListener("click", () => {
+
+                        if (searchInput) {
+                            searchInput.value = place;
+                        }
+
+                        window.location.href =
+                            `explore1.html?search=${encodeURIComponent(place)}`;
+
+                    });
+
+                    searchResults.appendChild(div);
+
+                });
+
+            }
+
+            // INITIAL RESULTS
+            renderResults(destinations);
+
+            // LIVE SEARCH
+            if (searchInput) {
+
+                searchInput.addEventListener("input", () => {
+
+                    const value =
+                        searchInput.value.trim().toLowerCase();
+
+                    const filtered = destinations.filter(place =>
+                        place.toLowerCase().includes(value)
+                    );
+
+                    renderResults(filtered);
+
+                });
+
+            }
+
+            // ENTER KEY SEARCH
+            if (searchInput) {
+
+                searchInput.addEventListener("keydown", (e) => {
+
+                    if (e.key === "Enter") {
+
+                        e.preventDefault();
+
+                        const value =
+                            searchInput.value.trim();
+
+                        if (value === "") return;
+
+                        if (searchPopup) {
+                            searchPopup.classList.remove("active");
+                        }
+
+                        window.location.href =
+                            `explore1.html?search=${encodeURIComponent(value)}`;
+
+                    }
+
+                });
+
+            }
+
+            /* ACCOUNT DROPDOWN */
+
+            const accountToggle =
+                document.getElementById("accountToggle");
+
+            const accountMenu =
+                document.getElementById("accountMenu");
+
+            if (accountToggle && accountMenu) {
+
+                accountToggle.addEventListener("click", () => {
+                    accountMenu.classList.toggle("active");
+                });
+
+                document.addEventListener("click", (e) => {
+
+                    if (
+                        !accountToggle.contains(e.target) &&
+                        !accountMenu.contains(e.target)
+                    ) {
+
+                        accountMenu.classList.remove("active");
+
+                    }
+
+                });
+
+            }
+
+            /* LOGIN CHECK */
+
+            window.addEventListener("load", () => {
+
+                const isLoggedIn =
+                    localStorage.getItem("traveloLoggedIn");
+
+                const user =
+                    localStorage.getItem("traveloUser");
+
+                const title =
+                    document.getElementById("accountTitle");
+
+                const subtitle =
+                    document.getElementById("accountSubtitle");
+
+                const image =
+                    document.getElementById("accountImage");
+
+                if (!title || !subtitle || !image) return;
+
+                if (isLoggedIn === "true") {
+
+                    title.innerHTML = "Account";
+                    subtitle.innerHTML = user;
+
+                    image.src =
+                        `https://api.dicebear.com/7.x/notionists/svg?seed=\${user}`;
+
+                } else {
+
+                    title.innerHTML = "Sign In";
+                    subtitle.innerHTML = "Guest";
+
+                }
+
+            });
+
+            /* LOGOUT */
+
+            const logoutBtn =
+                document.getElementById("logoutBtn");
+
+            if (logoutBtn) {
+
+                logoutBtn.addEventListener("click", () => {
+
+                    localStorage.removeItem("traveloLoggedIn");
+                    localStorage.removeItem("traveloUser");
+
+                    window.location.reload();
+
+                });
+
+            }
+
+            /* MOBILE MENU */
+
+            const menuBtn =
+                document.querySelector(".menu-btn");
+
+            const navLinks =
+                document.querySelector(".nav-links");
+
+            if (menuBtn && navLinks) {
+
+                menuBtn.addEventListener("click", () => {
+
+                    navLinks.classList.toggle("active");
+
+                });
+
+                document.querySelectorAll(".nav-links a").forEach(link => {
+
+                    link.addEventListener("click", () => {
+
+                        navLinks.classList.remove("active");
+
+                    });
+
+                });
+
+            }
+
+            /* NOTIFICATION TOGGLE */
+
+            const notificationToggle =
+                document.getElementById("notificationToggle");
+
+            if (notificationToggle) {
+
+                if (localStorage.getItem("notifications") === "on") {
+                    notificationToggle.checked = true;
+                }
+
+                notificationToggle.addEventListener("change", () => {
+
+                    if (notificationToggle.checked) {
+
+                        localStorage.setItem("notifications", "on");
+
+                    } else {
+
+                        localStorage.setItem("notifications", "off");
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

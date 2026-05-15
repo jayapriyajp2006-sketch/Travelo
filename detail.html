@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Travelo Destination Details</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --primary: #00c2a8;
+            --secondary: #007f73;
+            --white: #ffffff;
+            --light: #dff5f1;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 30px;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.75)),
+                url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* MAIN CARD */
+
+        .details-card {
+            width: 100%;
+            max-width: 1250px;
+
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+
+            border-radius: 34px;
+            overflow: hidden;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        /* IMAGE SIDE */
+
+        .image-side {
+            position: relative;
+            min-height: 780px;
+        }
+
+        .image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(to top,
+                    rgba(0, 0, 0, 0.9),
+                    rgba(0, 0, 0, 0.15));
+
+            padding: 35px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .tag {
+            width: fit-content;
+            padding: 10px 20px;
+
+            border-radius: 50px;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(10px);
+
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+
+            margin-bottom: 18px;
+        }
+
+        .destination-title {
+            font-size: 52px;
+            color: white;
+            font-weight: 700;
+
+            margin-bottom: 15px;
+        }
+
+        .destination-desc {
+            color: #d8f8f2;
+            line-height: 1.9;
+            font-size: 15px;
+
+            max-width: 650px;
+        }
+
+        /* CONTENT SIDE */
+
+        .content-side {
+            padding: 40px;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+
+            margin-bottom: 28px;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 22px;
+
+            padding: 22px;
+        }
+
+        .info-box i {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 16px;
+
+            background: linear-gradient(135deg,
+                    var(--primary),
+                    var(--secondary));
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .info-box h4 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #d7f7f2;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* INCLUDED */
+
+        .included-box {
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 26px;
+
+            padding: 28px;
+
+            margin-bottom: 28px;
+        }
+
+        .included-box h3 {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .included-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .included-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: #d7f7f2;
+            font-size: 14px;
+        }
+
+        .included-item i {
+            color: #00c2a8;
+        }
+
+        /* PRICE */
+
+        .price-card {
+            background: linear-gradient(135deg,
+                    rgba(0, 194, 168, 0.15),
+                    rgba(0, 127, 115, 0.2));
+
+            border-radius: 28px;
+
+            padding: 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 10px;
+        }
+
+        .price-left small {
+            color: #d7f7f2;
+            font-size: 13px;
+        }
+
+        .price-left h2 {
+            font-size: 42px;
+            margin-top: 6px;
+        }
+
+        .book-btn {
+            border: none;
+            outline: none;
+
+            padding: 16px 32px;
+
+            border-radius: 16px;
+
+            background: linear-gradient(135deg,
+                    var(--primary),
+                    var(--secondary));
+
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 16px;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(10px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+
+            z-index: 20;
+
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:950px) {
+
+            body {
+                padding: 18px;
+            }
+
+            .details-card {
+                grid-template-columns: 1fr;
+            }
+
+            .image-side {
+                min-height: 500px;
+            }
+
+            .destination-title {
+                font-size: 38px;
+            }
+
+            .content-side {
+                padding: 24px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .included-list {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .book-btn {
+                width: 100%;
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            .image-side {
+                min-height: 420px;
+            }
+
+            .image-overlay {
+                padding: 22px;
+            }
+
+            .destination-title {
+                font-size: 30px;
+            }
+
+            .destination-desc {
+                font-size: 13px;
+            }
+
+            .content-side {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .price-left h2 {
+                font-size: 34px;
+            }
+
+            .back-btn {
+                width: 44px;
+                height: 44px;
+                top: 18px;
+                left: 18px;
+                font-size: 14px;
+            }
+
+            .details-card {
+                border-radius: 24px;
+            }
+
+            .info-box {
+                padding: 18px;
+            }
+
+            .price-card {
+                padding: 22px;
+            }
+
+            .price-left h2 {
+                font-size: 30px;
+            }
+
+            .book-btn {
+                border-radius: 14px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACK BUTTON -->
+
+    <a href="javascript:history.back()" class="back-btn">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+
+    <!-- MAIN -->
+
+    <div class="details-card">
+
+        <!-- IMAGE SIDE -->
+
+        <div class="image-side">
+
+            <img id="destinationImage"
+                src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1400&auto=format&fit=crop">
+
+            <div class="image-overlay">
+
+                <div class="tag" id="destinationTag">
+                    Modern Destination
+                </div>
+
+                <h1 class="destination-title" id="destinationName">
+                    Australia
+                </h1>
+
+                <p class="destination-desc" id="destinationDesc">
+
+                    Explore beautiful beaches, luxury city life,
+                    amazing wildlife and unforgettable adventures
+                    across Australia's iconic destinations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- CONTENT SIDE -->
+
+        <div class="content-side">
+
+            <h2 class="section-title">
+                Destination Highlights
+            </h2>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    <h4>Duration</h4>
+
+                    <p id="durationText">
+                        8 Days / 7 Nights
+                    </p>
+
+                </div>
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <h4>Top Places</h4>
+
+                    <p id="placesText">
+                        Sydney, Melbourne, Gold Coast
+                    </p>
+
+                </div>
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-hotel"></i>
+
+                    <h4>Luxury Stay</h4>
+
+                    <p>
+                        Premium 5 star hotels with sea view rooms
+                        and complimentary breakfast.
+                    </p>
+
+                </div>
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-plane"></i>
+
+                    <h4>Travel Included</h4>
+
+                    <p>
+                        Flight tickets, airport pickup,
+                        local transport and guided tours.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- INCLUDED -->
+
+            <div class="included-box">
+
+                <h3>
+                    What's Included
+                </h3>
+
+                <div class="included-list">
+
+                    <div class="included-item">
+                        <i class="fa-solid fa-check"></i>
+                        Luxury Hotel Stay
+                    </div>
+
+                    <div class="included-item">
+                        <i class="fa-solid fa-check"></i>
+                        Airport Transfer
+                    </div>
+
+                    <div class="included-item">
+                        <i class="fa-solid fa-check"></i>
+                        Guided Tours
+                    </div>
+
+                    <div class="included-item">
+                        <i class="fa-solid fa-check"></i>
+                        Daily Breakfast
+                    </div>
+
+                    <div class="included-item">
+                        <i class="fa-solid fa-check"></i>
+                        Adventure Activities
+                    </div>
+
+                    <div class="included-item">
+                        <i class="fa-solid fa-check"></i>
+                        Travel Support
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PRICE -->
+
+            <div class="price-card">
+
+                <div class="price-left">
+
+                    <small>Starting From</small>
+
+                    <h2 id="destinationPrice">
+                        $1899
+                    </h2>
+
+                </div>
+
+                <button class="book-btn">
+                    Book Now
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        /* GET DATA FROM LOCAL STORAGE */
+
+        let destination =
+            JSON.parse(localStorage.getItem("selectedDestination"));
+
+        /* DEFAULT FALLBACK */
+
+        if (!destination) {
+
+            destination = {
+
+                name: "Canada Nature",
+                category: "Adventure",
+
+                img: "https://images.unsplash.com/photo-1503614472-8c93d56cd263?q=80&w=1400&auto=format&fit=crop",
+
+                price: "95000",
+
+                desc: "Beautiful mountains and lakes with unforgettable adventures.",
+
+                duration: "5 Days",
+
+                places: "Toronto, Banff",
+
+                includes: "Hotel + Flight + Breakfast"
+
+            };
+
+        }
+
+        /* LOAD DATA */
+
+        function loadDestination() {
+
+            /* IMAGE */
+
+            document.getElementById("destinationImage").src =
+                destination.img;
+
+            /* TAG */
+
+            document.getElementById("destinationTag").innerText =
+                destination.category || "Premium Destination";
+
+            /* NAME */
+
+            document.getElementById("destinationName").innerText =
+                destination.name;
+
+            /* DESCRIPTION */
+
+            document.getElementById("destinationDesc").innerText =
+                destination.desc;
+
+            /* DURATION */
+
+            document.getElementById("durationText").innerText =
+                destination.duration;
+
+            /* PLACES */
+
+            document.getElementById("placesText").innerText =
+                destination.places;
+
+            /* PRICE */
+
+            document.getElementById("destinationPrice").innerText =
+                "₹" + destination.price;
+
+        }
+
+        loadDestination();
+
+        /* BOOK BUTTON */
+
+        document.querySelector(".book-btn")
+            .addEventListener("click", () => {
+
+                localStorage.setItem(
+                    "traveloBooking",
+                    JSON.stringify(destination)
+                );
+
+                window.location.href = "ex.html";
+
+            });
+
+    </script>
+</body>
+
+</html>

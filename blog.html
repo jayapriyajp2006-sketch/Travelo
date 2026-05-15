@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travelo - Blog</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0F766E;
+            --secondary: #134E4A;
+            --light: #ECFEFF;
+            --white: #ffffff;
+            --dark: #121212;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background: #F6FBFB;
+            color: var(--dark);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #0F766E, #14B8A6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+            transform: rotate(8deg);
+        }
+
+        .logo-text span {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .logo-text small {
+            display: block;
+            color: #bff7f2;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-icon,
+        .menu-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-icon:hover {
+            background: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .nav-icon i {
+            font-size: 18px;
+        }
+
+        .icon-dot {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+        .account-wrapper {
+            position: relative;
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            cursor: pointer;
+        }
+
+        .account-btn img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .account-text h4 {
+            color: white;
+            font-size: 14px;
+        }
+
+        .account-text small {
+            color: #bff7f2;
+            font-size: 11px;
+        }
+
+        .account-menu {
+            position: absolute;
+            top: 72px;
+            right: 0;
+            width: 240px;
+            background: rgba(18, 18, 18, 0.96);
+            border-radius: 24px;
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .account-menu.active {
+            display: flex;
+        }
+
+        .account-item {
+            padding: 14px 16px;
+            border-radius: 16px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            gap: 14px;
+        }
+
+        .account-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .logout-item {
+            color: #ffb4b4;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* ================================
+   EXACT SEARCH POPUP DESIGN
+================================ */
+
+        .search-popup {
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.55);
+
+            backdrop-filter: blur(12px);
+
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+
+            padding-top: 120px;
+
+            z-index: 99999;
+
+        }
+
+        .search-popup.active {
+            display: flex;
+        }
+
+        /* MODAL */
+
+        .search-modal {
+
+            width: 90%;
+            max-width: 730px;
+
+            background: #ffffff;
+
+            border-radius: 36px;
+
+            padding: 34px;
+
+            box-shadow:
+                0 20px 70px rgba(0, 0, 0, 0.22);
+
+            animation: popupAnim .28s ease;
+
+        }
+
+        /* TOP */
+
+        .search-header {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 26px;
+
+        }
+
+        .search-header h2 {
+
+            font-size: 33px;
+            font-weight: 700;
+
+            color: #0f172a;
+
+            letter-spacing: -0.5px;
+
+        }
+
+        .search-header i {
+
+            font-size: 28px;
+
+            color: #707070;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+        .search-header i:hover {
+
+            transform: rotate(90deg);
+
+        }
+
+        /* INPUT */
+
+        .search-input-wrapper {
+
+            height: 68px;
+
+            background: #edf7f5;
+
+            border-radius: 22px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 22px;
+
+            margin-bottom: 28px;
+
+        }
+
+        .search-input-wrapper i {
+
+            color: #0F766E;
+
+            font-size: 18px;
+
+        }
+
+        .search-input-wrapper input {
+
+            width: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            margin-left: 14px;
+
+            font-size: 18px;
+            font-weight: 400;
+
+            color: #111827;
+
+        }
+
+        .search-input-wrapper input::placeholder {
+
+            color: #7c7c7c;
+
+        }
+
+        /* Search icon hover effect */
+
+        .search-input-wrapper i {
+
+            color: #0F766E;
+
+            font-size: 18px;
+
+            transition: all 0.3s ease;
+
+        }
+
+        .search-input-wrapper:hover i {
+
+            color: #14B8A6;
+
+            transform: scale(1.15);
+
+        }
+
+        .search-input-wrapper:focus-within i {
+
+            color: #14B8A6;
+
+            transform: scale(1.15);
+
+        }
+
+        /* TAGS */
+
+        .quick-search-list {
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 14px;
+
+        }
+
+        .quick-item {
+
+            padding: 14px 22px;
+
+            background: #f3f4f6;
+
+            border-radius: 18px;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            color: #111827;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+
+        }
+
+        .quick-item:hover {
+
+            background: #0F766E;
+
+            color: white;
+
+        }
+
+        /* ANIMATION */
+
+        @keyframes popupAnim {
+
+            from {
+
+                opacity: 0;
+                transform: translateY(-25px) scale(.97);
+
+            }
+
+            to {
+
+                opacity: 1;
+                transform: translateY(0) scale(1);
+
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .search-popup {
+
+                padding: 90px 16px 20px;
+
+            }
+
+            .search-modal {
+
+                width: 100%;
+
+                padding: 24px;
+
+                border-radius: 28px;
+
+            }
+
+            .search-header h2 {
+
+                font-size: 28px;
+
+            }
+
+            .search-input-wrapper {
+
+                height: 58px;
+
+                border-radius: 18px;
+
+            }
+
+            .search-input-wrapper input {
+
+                font-size: 15px;
+
+            }
+
+            .quick-item {
+
+                padding: 12px 18px;
+
+                font-size: 14px;
+
+                border-radius: 14px;
+
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .search-popup {
+                padding-top: 90px;
+            }
+
+            .search-box {
+
+                width: calc(100% - 24px);
+
+                padding: 22px;
+
+                border-radius: 24px;
+
+            }
+
+            .search-top h2 {
+                font-size: 22px;
+            }
+
+            .search-input-box {
+                height: 54px;
+            }
+
+        }
+
+        /* HERO */
+
+        .blog-hero {
+            min-height: 55vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 8% 80px;
+        }
+
+        .blog-hero-content {
+            max-width: 800px;
+            color: white;
+        }
+
+        .blog-hero h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+
+        .blog-hero p {
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* SEARCH FILTER */
+
+        .filter-area {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .blog-search {
+            flex: 1;
+            min-width: 260px;
+            background: white;
+            height: 60px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .blog-search input {
+            width: 100%;
+            border: none;
+            outline: none;
+            margin-left: 12px;
+            font-size: 15px;
+        }
+
+        .category-list {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 12px 22px;
+            border-radius: 40px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* BLOG GRID */
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.4s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .blog-content h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .blog-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .read-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #121212;
+            color: white;
+            padding: 90px 8% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-box p {
+            color: #aaa;
+            line-height: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons i {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid #2b2b2b;
+            padding-top: 25px;
+            text-align: center;
+            color: #aaa;
+        }
+
+        .footer-box a {
+            text-decoration: none;
+            color: #aaa;
+            transition: 0.3s;
+        }
+
+        .footer-box a:hover {
+            color: var(--primary);
+            padding-left: 4px;
+        }
+
+        /* NOTIFICATION ITEM FIX */
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 18px;
+            border-radius: 18px;
+
+            transition: 0.3s ease;
+        }
+
+        .notification-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .notification-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .notification-left i {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        /* PREMIUM SWITCH */
+
+        /* SMALL PREMIUM SWITCH */
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: all .35s ease;
+            overflow: hidden;
+        }
+
+        .slider::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg,
+                    rgba(20, 184, 166, 0.35),
+                    rgba(15, 118, 110, 0.1));
+            opacity: 0;
+            transition: .35s ease;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background: white;
+            transition: all .35s cubic-bezier(.68, -0.55, .27, 1.55);
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.25),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .switch input:checked+.slider {
+            background: linear-gradient(135deg, #14B8A6, #0F766E);
+            box-shadow: 0 0 16px rgba(20, 184, 166, 0.45);
+        }
+
+        .switch input:checked+.slider::after {
+            opacity: 1;
+        }
+
+        .switch input:checked+.slider::before {
+            transform: translate(22px, -50%);
+        }
+
+        .switch:hover .slider {
+            transform: scale(1.03);
+        }
+
+        /* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+        @media screen and (max-width: 768px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            /* NAVBAR */
+
+            .navbar {
+                width: 100%;
+                padding: 14px 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                gap: 10px;
+            }
+
+            .logo-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+            }
+
+            .logo-icon i {
+                font-size: 18px;
+            }
+
+            .logo-text span {
+                font-size: 24px;
+            }
+
+            .logo-text small {
+                font-size: 7px;
+                letter-spacing: 2px;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .nav-icon,
+            .menu-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 12px;
+                font-size: 14px;
+                flex-shrink: 0;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+
+            /* ACCOUNT */
+
+            .account-btn {
+                padding: 4px;
+                border-radius: 12px;
+            }
+
+            .account-btn img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .account-text,
+            .account-btn i {
+                display: none;
+            }
+
+            /* MOBILE NAV MENU */
+
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                left: 50%;
+                transform: translateX(-50%);
+
+                width: calc(100% - 32px);
+
+                background: rgba(18, 18, 18, 0.96);
+                backdrop-filter: blur(20px);
+
+                border-radius: 22px;
+
+                padding: 24px;
+
+                display: none;
+                flex-direction: column;
+                align-items: center;
+
+                gap: 18px;
+
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            /* HERO */
+
+            .blog-hero {
+                min-height: 45vh;
+                padding: 120px 20px 60px;
+            }
+
+            .blog-hero h1 {
+                font-size: 38px;
+                line-height: 1.2;
+            }
+
+            .blog-hero p {
+                font-size: 15px;
+                line-height: 1.8;
+            }
+
+            /* SECTION */
+
+            section {
+                padding: 60px 16px;
+            }
+
+            .section-title {
+                margin-bottom: 35px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+                line-height: 1.3;
+            }
+
+            .section-title p {
+                font-size: 14px;
+            }
+
+            /* FILTER AREA */
+
+            .filter-area {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 18px;
+                margin-bottom: 35px;
+            }
+
+            .blog-search {
+                width: 100%;
+                min-width: 100%;
+                height: 54px;
+                border-radius: 16px;
+            }
+
+            .category-list {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .category-btn {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+
+            /* BLOG GRID */
+
+            .blog-grid {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 22px;
+                width: 100%;
+            }
+
+            /* BLOG CARD */
+
+            .blog-card {
+                width: 100%;
+                max-width: 340px;
+                margin: 0 auto;
+
+                border-radius: 24px;
+                overflow: hidden;
+            }
+
+            .blog-card img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+            }
+
+            .blog-content {
+                padding: 20px;
+            }
+
+            .blog-content h3 {
+                font-size: 22px;
+                line-height: 1.4;
+            }
+
+            .blog-content p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .blog-meta {
+                font-size: 13px;
+                gap: 8px;
+            }
+
+            .read-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px;
+                border-radius: 14px;
+            }
+
+            /* SEARCH POPUP */
+
+            .search-box {
+                width: calc(100% - 24px);
+                padding: 20px;
+                border-radius: 24px;
+            }
+
+            .search-input-box {
+                height: 52px;
+            }
+
+            /* FOOTER */
+
+            footer {
+                padding: 60px 16px 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-box {
+                text-align: left;
+            }
+
+            .social-icons {
+                justify-content: left;
+            }
+
+        }
+
+        /* SEARCH POPUP */
+
+        .search-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+
+            padding-top: 120px;
+
+            z-index: 99999;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .search-popup.active {
+            display: flex;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 600px;
+
+            background: rgba(18, 18, 18, 0.96);
+
+            border-radius: 28px;
+
+            padding: 28px;
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .search-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 24px;
+        }
+
+        .search-top h2 {
+            color: white;
+            font-size: 28px;
+        }
+
+        .search-top i {
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .search-input-box {
+            height: 60px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 18px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 18px;
+
+            margin-bottom: 20px;
+        }
+
+        .search-input-box i {
+            color: white;
+        }
+
+        .search-input-box input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+
+            color: white;
+
+            margin-left: 12px;
+
+            font-size: 15px;
+        }
+
+        .search-item {
+            padding: 16px;
+
+            background: rgba(255, 255, 255, 0.06);
+
+            border-radius: 16px;
+
+            color: white;
+
+            margin-bottom: 12px;
+
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .search-input-box {
+            width: 100%;
+            height: 72px;
+            background: #f7f7f7;
+            border-radius: 22px;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .search-input-box:hover {
+            border-color: #14B8A6;
+            box-shadow: 0 0 18px rgba(20, 184, 166, 0.25);
+            background: white;
+        }
+
+        .search-input-box:focus-within {
+            border-color: #14B8A6;
+            box-shadow: 0 0 18px rgba(20, 184, 166, 0.35);
+            background: white;
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            .search-popup {
+                padding-top: 90px;
+            }
+
+            .search-box {
+                width: calc(100% - 24px);
+                padding: 22px;
+                border-radius: 24px;
+            }
+
+            .search-top h2 {
+                font-size: 22px;
+            }
+
+            .search-input-box {
+                height: 54px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-plane"></i>
+            </div>
+
+            <div class="logo-text">
+                <span>Travelo</span>
+                <small>Explore World</small>
+            </div>
+
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index2.html">Home 2</a></li>
+            <li><a href="aboutus1.html">About Us</a></li>
+            <li><a href="explore1.html">Explore</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+
+            <div class="nav-icon search-icon" id="searchBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+
+
+            <!-- SETTINGS MENU -->
+            <!-- COMBINED ACCOUNT DROPDOWN -->
+
+            <div class="account-wrapper">
+
+                <div class="account-btn" id="accountToggle">
+
+                    <img id="accountImage" src="https://api.dicebear.com/7.x/notionists/svg?seed=Travel" alt="user">
+
+                    <div class="account-text">
+                        <h4 id="accountTitle">Sign In</h4>
+                        <small id="accountSubtitle">Guest</small>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+                <!-- DROPDOWN -->
+
+                <div class="account-menu" id="accountMenu">
+
+                    <a href="profile.html" class="account-item">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+
+                    <div class="account-item">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Security</span>
+                    </div>
+
+                    <div class="account-item notification-item">
+
+                        <div class="notification-left">
+                            <i class="fa-solid fa-bell"></i>
+                            <span>Notifications</span>
+                        </div>
+
+                        <label class="switch">
+
+                            <input type="checkbox" id="notificationToggle">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                    <div class="account-item logout-item" id="logoutBtn">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- SEARCH POPUP -->
+
+    <div class="search-popup" id="searchPopup">
+
+        <div class="search-modal">
+
+            <!-- TOP -->
+
+            <div class="search-header">
+
+                <h2>Search Destinations</h2>
+
+                <i class="fa-solid fa-xmark" id="closeSearch"></i>
+
+            </div>
+
+            <!-- SEARCH BOX -->
+
+            <div class="search-input-wrapper">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                <input type="text" placeholder="Search places like Bali, Dubai, Paris..." id="popupSearchInput">
+
+            </div>
+
+            <!-- QUICK TAGS -->
+
+
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="blog-hero">
+
+        <div class="blog-hero-content">
+            <h1>Travel Stories & Insights</h1>
+
+            <p>
+                Explore luxury destinations, expert travel tips and unforgettable adventures
+                from around the world.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- BLOGS -->
+
+    <section>
+
+        <div class="section-title">
+            <h2>Latest Articles</h2>
+            <p>Discover inspiring stories, travel guides and luxury destination experiences.</p>
+        </div>
+
+        <div class="filter-area">
+
+            <div class="blog-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search travel blogs...">
+            </div>
+
+            <div class="category-list">
+
+                <button class="category-btn active" data-category="All">All</button>
+
+                <button class="category-btn" data-category="Luxury">Luxury</button>
+
+                <button class="category-btn" data-category="Adventure">Adventure</button>
+
+                <button class="category-btn" data-category="Beach">Beach</button>
+
+                <button class="category-btn" data-category="Travel Tips">Travel Tips</button>
+
+            </div>
+        </div>
+
+        <div class="blog-grid" id="blogGrid">
+
+            <!-- CARD 1 -->
+            <div class="blog-card" data-category="Beach">
+                <img
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Sophia Lee</span>
+                        <span>May 20, 2026</span>
+                    </div>
+
+                    <h3>Top 10 Luxury Beach Destinations</h3>
+
+                    <p>
+                        Discover breathtaking beaches, crystal clear waters and unforgettable luxury resorts around the
+                        globe.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Top 10 Luxury Beach Destinations" data-author="Sophia Lee"
+                        data-date="May 20, 2026"
+                        data-image="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Discover breathtaking beaches, crystal clear waters and unforgettable luxury resorts around the globe with premium experiences and ocean views.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="blog-card" data-category="Luxury">
+
+                <img src="https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg">
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By David Miller</span>
+                        <span>April 11, 2026</span>
+                    </div>
+
+                    <h3>How To Travel The World In Style</h3>
+
+                    <p>
+                        Learn luxury travel secrets, premium booking strategies and unforgettable travel experiences.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="How To Travel The World In Style"
+                        data-author="David Miller" data-date="April 11, 2026"
+                        data-image="https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg"
+                        data-description="Luxury travel is about comfort, premium experiences and unforgettable memories across the world.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="blog-card" data-category="Adventure">
+
+                <img
+                    src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Emma Wilson</span>
+                        <span>March 02, 2026</span>
+                    </div>
+
+                    <h3>Mountain Adventures You Must Experience</h3>
+
+                    <p>
+                        Explore thrilling mountain destinations filled with adventure and scenic beauty.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Mountain Adventures You Must Experience"
+                        data-author="Emma Wilson" data-date="March 02, 2026"
+                        data-image="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Experience mountain adventures with trekking, luxury camps and unforgettable landscapes.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="blog-card" data-category="Travel Tips">
+
+                <img
+                    src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Olivia Brown</span>
+                        <span>February 15, 2026</span>
+                    </div>
+
+                    <h3>Essential Tips For First-Time Travelers</h3>
+
+                    <p>
+                        Smart travel hacks and important planning strategies for beginners.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Essential Tips For First-Time Travelers"
+                        data-author="Olivia Brown" data-date="February 15, 2026"
+                        data-image="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Travel smarter with packing tips, booking strategies and safety advice for first-time travelers.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="blog-card" data-category="Beach">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By James Cooper</span>
+                        <span>January 05, 2026</span>
+                    </div>
+
+                    <h3>Hidden Tropical Islands To Visit</h3>
+
+                    <p>
+                        Escape the crowds and explore hidden tropical paradise destinations.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Hidden Tropical Islands To Visit"
+                        data-author="James Cooper" data-date="January 05, 2026"
+                        data-image="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Explore hidden islands with turquoise waters, private beaches and peaceful luxury stays.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="blog-card" data-category="Adventure">
+
+                <img
+                    src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Ethan Walker</span>
+                        <span>June 01, 2026</span>
+                    </div>
+
+                    <h3>Best Hiking Trails Around The World</h3>
+
+                    <p>
+                        Discover breathtaking hiking trails and adventure experiences across mountains and forests.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Best Hiking Trails Around The World"
+                        data-author="Ethan Walker" data-date="June 01, 2026"
+                        data-image="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Explore the most scenic hiking destinations with unforgettable mountain trails and outdoor adventures.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 7 -->
+            <div class="blog-card" data-category="Luxury">
+
+                <img
+                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Charlotte Green</span>
+                        <span>June 12, 2026</span>
+                    </div>
+
+                    <h3>Luxury Resorts Worth Every Penny</h3>
+
+                    <p>
+                        Experience premium resorts with world-class services and unforgettable luxury stays.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Luxury Resorts Worth Every Penny"
+                        data-author="Charlotte Green" data-date="June 12, 2026"
+                        data-image="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Enjoy premium hospitality, infinity pools and breathtaking luxury resort experiences around the world.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 8 -->
+            <div class="blog-card" data-category="Beach">
+
+                <img
+                    src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Mia Johnson</span>
+                        <span>July 05, 2026</span>
+                    </div>
+
+                    <h3>Top Beach Escapes For Summer</h3>
+
+                    <p>
+                        Relax at beautiful tropical beaches with crystal-clear waters and luxury stays.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Top Beach Escapes For Summer" data-author="Mia Johnson"
+                        data-date="July 05, 2026"
+                        data-image="https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Escape to tropical beaches and enjoy relaxing summer vacations with amazing sea views.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 9 -->
+            <div class="blog-card" data-category="Travel Tips">
+
+                <img
+                    src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Lucas Martin</span>
+                        <span>July 20, 2026</span>
+                    </div>
+
+                    <h3>How To Save Money While Traveling</h3>
+
+                    <p>
+                        Smart budgeting and booking tricks to reduce your travel expenses.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="How To Save Money While Traveling"
+                        data-author="Lucas Martin" data-date="July 20, 2026"
+                        data-image="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Learn travel budgeting strategies and affordable travel planning techniques for better trips.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 10 -->
+            <div class="blog-card" data-category="Adventure">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Noah Anderson</span>
+                        <span>August 02, 2026</span>
+                    </div>
+
+                    <h3>Desert Safari Adventures You’ll Love</h3>
+
+                    <p>
+                        Explore thrilling desert safari experiences and luxury desert camps.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Desert Safari Adventures You’ll Love"
+                        data-author="Noah Anderson" data-date="August 02, 2026"
+                        data-image="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Enjoy dune rides, desert sunsets and unforgettable safari experiences in golden deserts.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 11 -->
+            <div class="blog-card" data-category="Luxury">
+
+                <img
+                    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Ava Thomas</span>
+                        <span>August 14, 2026</span>
+                    </div>
+
+                    <h3>Private Island Luxury Experiences</h3>
+
+                    <p>
+                        Discover exclusive island getaways designed for ultimate comfort and privacy.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Private Island Luxury Experiences" data-author="Ava Thomas"
+                        data-date="August 14, 2026"
+                        data-image="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Experience private island resorts with world-class services and breathtaking ocean views.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 12 -->
+            <div class="blog-card" data-category="Travel Tips">
+
+                <img src="https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg">
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Grace Taylor</span>
+                        <span>September 01, 2026</span>
+                    </div>
+
+                    <h3>Travel Packing Tips You Need</h3>
+
+                    <p>
+                        Pack smarter and lighter with these essential travel organization tips.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Travel Packing Tips You Need" data-author="Grace Taylor"
+                        data-date="September 01, 2026"
+                        data-image="https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg"
+                        data-description="Master travel packing with space-saving techniques and essential packing checklists.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 13 -->
+            <div class="blog-card" data-category="Beach">
+
+                <img
+                    src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Liam Harris</span>
+                        <span>September 18, 2026</span>
+                    </div>
+
+                    <h3>Best Sunset Beaches In Asia</h3>
+
+                    <p>
+                        Watch stunning sunsets at some of the most beautiful beaches in Asia.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Best Sunset Beaches In Asia" data-author="Liam Harris"
+                        data-date="September 18, 2026"
+                        data-image="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Enjoy unforgettable sunsets and peaceful beach escapes across tropical Asian destinations.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 14 -->
+            <div class="blog-card" data-category="Adventure">
+
+                <img
+                    src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Benjamin Scott</span>
+                        <span>October 03, 2026</span>
+                    </div>
+
+                    <h3>Snow Mountain Trips For Adventure Lovers</h3>
+
+                    <p>
+                        Explore snowy mountain destinations perfect for thrill seekers and explorers.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Snow Mountain Trips For Adventure Lovers"
+                        data-author="Benjamin Scott" data-date="October 03, 2026"
+                        data-image="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Experience snow-covered landscapes, skiing adventures and luxury winter escapes.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 15 -->
+            <div class="blog-card" data-category="Luxury">
+
+                <img
+                    src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="blog-content">
+
+                    <div class="blog-meta">
+                        <span>By Isabella White</span>
+                        <span>October 20, 2026</span>
+                    </div>
+
+                    <h3>Luxury Train Journeys Around The World</h3>
+
+                    <p>
+                        Travel in elegance with luxury train rides through stunning landscapes.
+                    </p>
+
+                    <a href="#" class="read-btn" data-title="Luxury Train Journeys Around The World"
+                        data-author="Isabella White" data-date="October 20, 2026"
+                        data-image="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200&auto=format&fit=crop"
+                        data-description="Discover elegant train journeys featuring luxury cabins, scenic routes and premium dining.">
+
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div class="footer-box">
+
+                <div class="logo">
+
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+
+                    <div class="logo-text">
+                        <span>Travelo</span>
+                        <small>Explore World</small>
+                    </div>
+
+                </div>
+
+                <p>
+                    Premium travel booking platform designed for modern travelers and adventure lovers.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="https://facebook.com" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://instagram.com" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://twitter.com" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+
+                    <a href="https://linkedin.com" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+
+
+            </div>
+
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <p>
+                    <a href="index.html">Home</a>
+                </p>
+                <p><a href="index2.html">Home 2</a></p>
+                <p>
+                    <a href="aboutus1.html">About Us</a>
+                </p>
+                <p>
+                    <a href="explore1.html">Explore</a>
+                </p>
+
+                <p>
+                    <a href="booking.html">Booking</a>
+                </p>
+                <p>
+                    <a href="blog.html">Blog</a>
+                </p>
+                <p>
+                    <a href="contact.html">Contact</a>
+                </p>
+
+            </div>
+
+            <div class="footer-box">
+                <h3>Support</h3>
+                <p> <a href="faq.html">FAQs</a></p>
+
+                <p> <a href="security.html">Security</a></p>
+
+                <p><a href="privacy.html">Privacy Policy</a></p>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p>Email: support@travelo.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Chennai, India</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Travelo. All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <script>
+
+
+
+
+        // ACCOUNT MENU
+
+        const accountToggle =
+            document.getElementById("accountToggle");
+
+        const accountMenu =
+            document.getElementById("accountMenu");
+
+        accountToggle.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            accountMenu.classList.toggle("active");
+
+        });
+
+        // CLOSE ACCOUNT MENU OUTSIDE
+        document.addEventListener("click", (e) => {
+
+            if (
+                !accountToggle.contains(e.target) &&
+                !accountMenu.contains(e.target)
+            ) {
+
+                accountMenu.classList.remove("active");
+
+            }
+
+        });
+
+
+
+        // MOBILE MENU
+
+        const menuBtn =
+            document.querySelector(".menu-btn");
+
+        const navLinks =
+            document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+        // CLOSE MOBILE MENU WHEN LINK CLICKED
+        document.querySelectorAll(".nav-links a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navLinks.classList.remove("active");
+
+                });
+
+            });
+
+
+
+        // BLOG FILTER
+
+        const categoryButtons =
+            document.querySelectorAll(".category-btn");
+
+        const blogCards =
+            document.querySelectorAll(".blog-card");
+
+        const noResults =
+            document.getElementById("noResults");
+
+        // BLOG SEARCH INPUT
+
+        const blogSearchInput =
+            document.getElementById("searchInput");
+
+        let currentCategory = "All";
+
+        // FILTER FUNCTION
+
+        function filterBlogs() {
+
+            const searchValue =
+                blogSearchInput.value.toLowerCase();
+
+            let visibleCount = 0;
+
+            blogCards.forEach(card => {
+
+                const title =
+                    card.querySelector("h3")
+                        .innerText.toLowerCase();
+
+                const text =
+                    card.querySelector("p")
+                        .innerText.toLowerCase();
+
+                const category =
+                    card.dataset.category;
+
+                const matchesSearch =
+                    title.includes(searchValue) ||
+                    text.includes(searchValue);
+
+                const matchesCategory =
+                    currentCategory === "All" ||
+                    category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
+
+                    card.style.display = "block";
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+            if (noResults) {
+
+                noResults.style.display =
+                    visibleCount === 0
+                        ? "block"
+                        : "none";
+
+            }
+
+        }
+
+        // LIVE SEARCH
+
+        blogSearchInput.addEventListener(
+            "input",
+            filterBlogs
+        );
+
+        // CATEGORY FILTER
+
+        categoryButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                categoryButtons.forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+                button.classList.add("active");
+
+                currentCategory =
+                    button.dataset.category;
+
+                filterBlogs();
+
+            });
+
+        });
+
+
+
+        /* =========================
+           SEARCH POPUP
+        ========================= */
+
+        const searchBtn =
+            document.getElementById("searchBtn");
+
+        const searchPopup =
+            document.getElementById("searchPopup");
+
+        const closeSearch =
+            document.getElementById("closeSearch");
+
+        // POPUP SEARCH INPUT
+
+        const popupSearchInput =
+            document.getElementById("popupSearchInput");
+
+        /* OPEN */
+
+        searchBtn.addEventListener("click", () => {
+
+            searchPopup.classList.add("active");
+
+            setTimeout(() => {
+                popupSearchInput.focus();
+            }, 100);
+
+        });
+
+        /* CLOSE */
+
+        closeSearch.addEventListener("click", () => {
+
+            searchPopup.classList.remove("active");
+
+        });
+
+        /* ENTER SEARCH */
+
+        popupSearchInput.addEventListener("keydown", (e) => {
+
+            if (e.key === "Enter") {
+
+                e.preventDefault();
+
+                const value =
+                    popupSearchInput.value.trim();
+
+                if (value === "") return;
+
+                window.location.href =
+                    `explore1.html?search=${encodeURIComponent(value)}`;
+
+            }
+
+        });
+
+
+
+        // BLOG DETAIL SAVE
+
+        const readButtons =
+            document.querySelectorAll(".read-btn");
+
+        readButtons.forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                const blogData = {
+
+                    title: btn.dataset.title,
+                    author: btn.dataset.author,
+                    date: btn.dataset.date,
+                    image: btn.dataset.image,
+                    description: btn.dataset.description
+
+                };
+
+                localStorage.setItem(
+                    "selectedBlog",
+                    JSON.stringify(blogData)
+                );
+
+                window.location.href =
+                    "blog-detail.html";
+
+            });
+
+        });
+
+
+
+        // NOTIFICATION TOGGLE
+
+        const notificationToggle =
+            document.getElementById("notificationToggle");
+
+        // LOAD SAVED STATE
+        if (
+            localStorage.getItem("notifications")
+            === "on"
+        ) {
+
+            notificationToggle.checked = true;
+
+        }
+
+        notificationToggle.addEventListener("change", () => {
+
+            if (notificationToggle.checked) {
+
+                localStorage.setItem(
+                    "notifications",
+                    "on"
+                );
+
+            } else {
+
+                localStorage.setItem(
+                    "notifications",
+                    "off"
+                );
+
+            }
+
+        });
+        /* LOGIN CHECK */
+
+        window.onload = function () {
+
+            const isLoggedIn =
+                localStorage.getItem("traveloLoggedIn");
+
+            const user =
+                localStorage.getItem("traveloUser");
+
+            const title =
+                document.getElementById("accountTitle");
+
+            const subtitle =
+                document.getElementById("accountSubtitle");
+
+            const image =
+                document.getElementById("accountImage");
+
+            if (isLoggedIn === "true") {
+
+                title.innerHTML = "Account";
+
+                subtitle.innerHTML = user;
+
+                image.src =
+                    `https://api.dicebear.com/7.x/notionists/svg?seed=${user}`;
+
+            } else {
+
+                title.innerHTML = "Sign In";
+
+                subtitle.innerHTML = "Guest";
+
+            }
+
+        };
+
+
+        // LOGOUT
+
+        const logoutBtn =
+            document.getElementById("logoutBtn");
+
+        logoutBtn.addEventListener("click", () => {
+
+            localStorage.clear();
+
+            alert("Logged out successfully");
+
+            window.location.href = "index.html";
+
+        });
+
+    </script>
+</body>
+
+</html>
