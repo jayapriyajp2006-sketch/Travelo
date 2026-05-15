@@ -37,6 +37,7 @@
             align-items: center;
 
             padding: 20px;
+
             overflow: hidden;
 
             position: relative;
@@ -101,10 +102,11 @@
 
         /* MAIN BOX */
 
+
         .terms-container {
             width: 100%;
             max-width: 950px;
-            height: 95vh;
+            height: auto;
 
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -274,20 +276,151 @@
 
         @media(max-width:768px) {
 
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            body {
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* BACK BUTTON */
+
+            .back-btn {
+                top: 14px;
+                left: 14px;
+
+                width: 40px;
+                height: 40px;
+
+                border-radius: 12px;
+
+                font-size: 14px;
+
+                z-index: 100;
+            }
+
+            /* MAIN CONTAINER */
+
             .terms-container {
-                padding: 30px 22px;
-            }
 
-            .terms-title h1 {
-                font-size: 36px;
-            }
+                width: calc(100% - 24px);
+                height: calc(100vh - 24px);
 
-            .button-group {
+                margin: 0;
+
+                padding: 70px 16px 18px;
+
+                border-radius: 24px;
+
+                overflow: hidden;
+
+                display: flex;
                 flex-direction: column;
             }
 
+            /* LOGO */
+
+            .logo {
+                margin-bottom: 18px;
+                gap: 10px;
+            }
+
+            .logo-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 14px;
+            }
+
+            .logo-icon i {
+                font-size: 18px;
+            }
+
+            .logo-text span {
+                font-size: 24px;
+            }
+
+            .logo-text small {
+                font-size: 8px;
+            }
+
+            /* TITLE */
+
+            .terms-title h1 {
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+
+            .terms-title p {
+                font-size: 13px;
+                line-height: 1.6;
+                margin-bottom: 18px;
+            }
+
+            /* TERMS BOX */
+
             .terms-box {
-                max-height: 350px;
+
+                flex: 1;
+
+                max-height: unset;
+
+                overflow-y: auto;
+
+                padding: 18px;
+
+                border-radius: 18px;
+            }
+
+            .terms-box h3 {
+                font-size: 16px;
+            }
+
+            .terms-box p {
+                font-size: 13px;
+                line-height: 1.7;
+            }
+
+            /* BUTTONS */
+
+            .button-group {
+                margin-top: 16px;
+
+                display: flex;
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+            .agree-btn,
+            .deny-btn {
+
+                width: 100%;
+
+                height: 60px;
+
+                border-radius: 18px;
+
+                font-size: 16px;
+                font-weight: 600;
+
+                padding: 0 22px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                gap: 12px;
             }
         }
     </style>
