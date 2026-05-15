@@ -49,6 +49,247 @@
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 10000;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #0F766E, #14B8A6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
+            transition: 0.4s;
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+            transform: rotate(8deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .logo-text small {
+            font-size: 12px;
+            color: #bff7f2;
+            letter-spacing: 3px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(0deg) scale(1.08);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            position: relative;
+        }
+
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-icon,
+        .menu-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-icon:hover {
+
+            background: rgba(20, 184, 166, 0.22);
+
+            transform: translateY(-2px);
+
+        }
+
+        .nav-icon:hover i {
+
+            color: white;
+
+            transform: scale(1.05);
+
+        }
+
+        .nav-icon i {
+
+            font-size: 18px;
+
+            color: white;
+
+            transition: 0.3s ease;
+
+        }
+
+        .icon-dot {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+
+        .profile-box:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .profile-box img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .profile-box h4 {
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .profile-box small {
+            color: #bff7f2;
+            font-size: 11px;
+        }
+
+        .menu-btn {
+            display: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.12);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+        }
+
+
+        .nav-right i {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-right i:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)),
+                url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop');
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 130px 8%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #F6FBFB;
+            overflow-x: hidden;
+            color: #121212;
+        }
+
+        :root {
+            --primary: #0F766E;
+            --secondary: #134E4A;
+            --light: #ECFEFF;
+            --white: #ffffff;
+            --dark: #121212;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
             z-index: 1000;
             padding: 22px 8%;
             display: flex;
@@ -167,18 +408,7 @@
             border-radius: 50%;
         }
 
-        .profile-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 8px 14px;
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.35s;
-            cursor: pointer;
-        }
+
 
         .profile-box:hover {
             transform: translateY(-4px);
@@ -775,92 +1005,303 @@
             scroll-behavior: smooth;
         }
 
-        /* SETTINGS BUTTON */
+        /* =========================================
+   SEARCH POPUP
+========================================= */
 
-        .settings-btn {
-            width: 45px;
-            height: 45px;
+        .search-popup {
+            position: fixed;
+            inset: 0;
 
-            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
 
-            background: rgba(255, 255, 255, 0.1);
+            z-index: 3000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.35s ease;
+        }
+
+        .search-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* SEARCH BOX */
+
+        .search-box {
+            width: 100%;
+            max-width: 720px;
+
+            background: white;
+
+            border-radius: 32px;
+
+            padding: 35px;
+
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+
+            transform: translateY(40px) scale(0.95);
+
+            transition: 0.35s ease;
+        }
+
+        .search-popup.active .search-box {
+            transform: translateY(0) scale(1);
+        }
+
+        /* TOP */
+
+        .search-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 28px;
+        }
+
+        .search-top h2 {
+            font-size: 32px;
+            font-weight: 700;
+
+            color: #121212;
+        }
+
+        /* CLOSE BUTTON */
+
+        .search-top i {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 16px;
+
+            background: #f5f5f5;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+
+            font-size: 18px;
+            color: #121212;
+        }
+
+        .search-top i:hover {
+            background: #0F766E;
+            color: white;
+        }
+
+        /* INPUT BOX */
+
+        .search-input-box {
+            width: 100%;
+            height: 72px;
+
+            background: #f7f7f7;
+
+            border-radius: 22px;
+
+            padding: 0 24px;
 
             display: flex;
             align-items: center;
-            justify-content: center;
 
-            color: white;
-            text-decoration: none;
+            gap: 16px;
 
-            font-size: 18px;
+            border: 2px solid transparent;
 
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
 
-        .settings-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-
-            transform: rotate(90deg);
+        .search-input-box:focus-within {
+            border-color: #0F766E;
+            background: white;
         }
 
-        /* SETTINGS DROPDOWN */
-
-        .settings-wrapper {
-            position: relative;
+        .search-input-box i {
+            font-size: 20px;
+            color: #0F766E;
         }
 
-        .settings-btn {
-            width: 48px;
-            height: 48px;
+        .search-input-box input {
+            width: 100%;
 
             border: none;
             outline: none;
 
-            border-radius: 16px;
+            background: transparent;
+
+            font-size: 18px;
+            font-weight: 500;
+
+            color: #121212;
+        }
+
+        /* SEARCH TAGS */
+
+        .search-results {
+            margin-top: 30px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 14px;
+        }
+
+        .search-item {
+            padding: 14px 24px;
+
+            background: #ECFEFF;
+
+            border-radius: 50px;
+
+            color: #0F766E;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        .search-item:hover {
+            background: #0F766E;
+            color: white;
+
+            transform: translateY(-3px);
+        }
+
+        /* =========================================
+   MOBILE
+========================================= */
+
+        @media (max-width: 768px) {
+
+            .search-popup {
+                padding: 16px;
+            }
+
+            .search-box {
+                padding: 24px;
+
+                border-radius: 24px;
+            }
+
+            .search-top h2 {
+                font-size: 24px;
+            }
+
+            .search-top i {
+                width: 44px;
+                height: 44px;
+
+                border-radius: 12px;
+            }
+
+            .search-input-box {
+                height: 60px;
+
+                padding: 0 18px;
+
+                border-radius: 18px;
+            }
+
+            .search-input-box input {
+                font-size: 16px;
+            }
+
+            .search-item {
+                padding: 12px 18px;
+
+                font-size: 14px;
+            }
+        }
+
+        /* ACCOUNT DROPDOWN */
+
+        .account-wrapper {
+            position: relative;
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 8px 14px;
 
             background: rgba(255, 255, 255, 0.12);
 
             border: 1px solid rgba(255, 255, 255, 0.08);
 
+            border-radius: 18px;
+
             backdrop-filter: blur(12px);
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            color: white;
 
             cursor: pointer;
 
             transition: 0.3s;
         }
 
-        .settings-btn:hover {
-            background: var(--primary);
-
-            transform: rotate(90deg);
+        .account-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.18);
         }
 
-        .settings-menu {
+        .account-btn img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .account-text h4 {
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .account-text small {
+            color: #bff7f2;
+            font-size: 11px;
+        }
+
+        .account-btn i {
+            color: white;
+            font-size: 12px;
+        }
+
+        .account-menu {
             position: absolute;
 
-            top: 65px;
+            top: 70px;
             right: 0;
 
-            width: 260px;
+            width: 250px;
 
-            background: rgba(18, 18, 18, 0.92);
+            background: rgba(18, 18, 18, 0.95);
 
             border: 1px solid rgba(255, 255, 255, 0.08);
-
-            backdrop-filter: blur(20px);
 
             border-radius: 24px;
 
             padding: 12px;
 
-            display: none;
+            backdrop-filter: blur(20px);
 
+            display: none;
             flex-direction: column;
 
             gap: 10px;
@@ -868,14 +1309,13 @@
             z-index: 1000;
         }
 
-        .settings-menu.active {
+        .account-menu.active {
             display: flex;
         }
 
-        .setting-item {
+        .account-item {
             display: flex;
             align-items: center;
-
             gap: 14px;
 
             padding: 14px 16px;
@@ -884,12 +1324,14 @@
 
             color: white;
 
-            cursor: pointer;
+            text-decoration: none;
 
             transition: 0.3s;
+
+            cursor: pointer;
         }
 
-        .setting-item:hover {
+        .account-item:hover {
             background: rgba(255, 255, 255, 0.08);
         }
 
@@ -897,179 +1339,527 @@
             color: #ffb4b4;
         }
 
-        /* SEARCH POPUP */
-
-        .search-popup {
-            position: fixed;
-
-            inset: 0;
-
-            background: rgba(0, 0, 0, 0.6);
-
-            backdrop-filter: blur(8px);
-
-            display: none;
-
-            justify-content: center;
-            align-items: flex-start;
-
-            padding-top: 120px;
-
-            z-index: 2000;
-        }
-
-        .search-popup.active {
-            display: flex;
-        }
-
-        .search-box {
-            width: 90%;
-            max-width: 600px;
-
-            background: rgba(18, 18, 18, 0.92);
-
-            border: 1px solid rgba(255, 255, 255, 0.08);
-
-            border-radius: 30px;
-
-            padding: 24px;
-
-            backdrop-filter: blur(20px);
-
-            animation: popup 0.3s ease;
-        }
-
-        @keyframes popup {
-
-            from {
-                transform: translateY(-30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .search-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            margin-bottom: 22px;
-        }
-
-        .search-top h2 {
-            color: white;
-        }
-
-        .search-top i {
-            color: white;
-
-            font-size: 22px;
-
-            cursor: pointer;
-        }
-
-        .search-input-box {
-            width: 100%;
-
-            height: 58px;
-
-            background: rgba(255, 255, 255, 0.08);
-
-            border-radius: 18px;
-
-            display: flex;
-            align-items: center;
-
-            padding: 0 18px;
-
-            margin-bottom: 22px;
-        }
-
-        .search-input-box i {
+        .footer-box a {
+            text-decoration: none;
             color: #aaa;
-
-            margin-right: 12px;
-        }
-
-        .search-input-box input {
-            width: 100%;
-
-            background: transparent;
-
-            border: none;
-            outline: none;
-
-            color: white;
-
-            font-size: 16px;
-        }
-
-        .search-input-box input::placeholder {
-            color: #aaa;
-        }
-
-        .search-results {
-            display: flex;
-            flex-direction: column;
-
-            gap: 12px;
-        }
-
-        .search-item {
-            padding: 16px;
-
-            border-radius: 16px;
-
-            background: rgba(255, 255, 255, 0.06);
-
-            color: white;
-
-            cursor: pointer;
-
             transition: 0.3s;
         }
 
-        .search-item:hover {
-            background: var(--primary);
-
-            transform: translateX(5px);
+        .footer-box a:hover {
+            color: var(--primary);
+            padding-left: 4px;
         }
 
-        /* MOBILE */
+        /* NOTIFICATION TOGGLE */
 
-        @media(max-width:768px) {
+        .notification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+        }
 
-            .hero h1 {
-                font-size: 42px;
+        .notification-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* SMALL PREMIUM SWITCH */
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all .35s ease;
+        }
+
+        /* GLOW EFFECT */
+
+        .slider::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg,
+                    rgba(20, 184, 166, 0.35),
+                    rgba(15, 118, 110, 0.1));
+            opacity: 0;
+            transition: .35s ease;
+        }
+
+        /* SWITCH BALL */
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 50%;
+            transition: all .35s cubic-bezier(.68, -0.55, .27, 1.55);
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.25),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ACTIVE */
+
+        .switch input:checked+.slider {
+            background: linear-gradient(135deg, #14B8A6, #0F766E);
+            box-shadow: 0 0 16px rgba(20, 184, 166, 0.45);
+        }
+
+        .switch input:checked+.slider::after {
+            opacity: 1;
+        }
+
+        .switch input:checked+.slider::before {
+            transform: translate(22px, -50%);
+        }
+
+        /* HOVER */
+
+        .switch:hover .slider {
+            transform: scale(1.03);
+        }
+
+        /* BOTTOM AREA */
+
+        .destination-bottom {
+            margin-top: 22px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* RATING */
+
+        .destination-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .destination-rating i {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        /* PRICE BUTTON */
+
+        .price-btn {
+            border: none;
+            outline: none;
+
+            padding: 14px 24px;
+
+            border-radius: 40px;
+
+            background: white;
+            color: #0F766E;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .18);
+        }
+
+        .price-btn:hover {
+            transform: translateY(-4px);
+            background: #0F766E;
+            color: white;
+        }
+
+        /* VIEW ALL BUTTON */
+
+        .view-all-btn {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 14px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 25px rgba(15, 118, 110, 0.25);
+        }
+
+        .view-all-btn:hover {
+            transform: translateY(-4px);
+            background: var(--secondary);
+        }
+
+        /* =========================================
+MOBILE RESPONSIVE FIX
+========================================= */
+        /* =========================================
+MOBILE RESPONSIVE FIX
+========================================= */
+
+        @media screen and (max-width: 768px) {
+
+            html,
+            body {
+                width: 100%;
+                overflow-x: hidden;
             }
 
-            .section-title h2 {
-                font-size: 38px;
+            body {
+                position: relative;
             }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            section {
+                padding: 70px 16px;
+            }
+
+            /* NAVBAR */
+
+            .navbar {
+                padding: 14px 16px;
+                height: 78px;
+            }
+
+            .logo {
+                gap: 8px;
+            }
+
+            .logo-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+                flex-shrink: 0;
+            }
+
+            .logo-icon i {
+                font-size: 18px;
+            }
+
+            .logo-text span {
+                font-size: 22px;
+            }
+
+            .logo-text small {
+                font-size: 7px;
+                letter-spacing: 1px;
+            }
+
+            /* NAV RIGHT */
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .nav-icon,
+            .menu-btn {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                border-radius: 12px;
+                flex-shrink: 0;
+            }
+
+            .nav-icon i,
+            .menu-btn i {
+                font-size: 15px;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+
+            /* ACCOUNT */
+
+            .account-btn {
+                padding: 4px;
+                border-radius: 12px;
+            }
+
+            .account-btn img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .account-text,
+            .account-btn i {
+                display: none;
+            }
+
+            /* MOBILE MENU */
 
             .nav-links {
                 position: absolute;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background: #121212;
-                flex-direction: column;
-                text-align: center;
-                padding: 30px;
+                top: 72px;
+                left: 50%;
+                transform: translateX(-50%);
+
+                width: calc(100% - 32px);
+
+                background: rgba(18, 18, 18, 0.96);
+                backdrop-filter: blur(20px);
+
+                border-radius: 22px;
+
+                padding: 8px;
+
                 display: none;
+                flex-direction: column;
+                align-items: center;
+
+                gap: 12px;
+
+                z-index: 999;
             }
 
             .nav-links.active {
                 display: flex;
             }
 
-            .menu-btn {
-                display: block;
+            .nav-links a {
+                padding: 8px 10px;
+                min-height: 32px;
+                line-height: 1;
             }
+
+            /* HERO */
+
+            .hero {
+                min-height: auto;
+
+                padding: 130px 20px 90px;
+
+                text-align: center;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero-tag {
+                font-size: 13px;
+                padding: 10px 18px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 15px;
+                line-height: 1.8;
+                margin-top: 18px;
+            }
+
+            /* HERO BUTTONS */
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 14px;
+                margin-top: 28px;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+                padding: 15px;
+                border-radius: 16px;
+            }
+
+            /* STATS */
+
+            .stats {
+                margin-top: -40px;
+                padding: 0 16px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+                gap: 24px;
+                border-radius: 24px;
+            }
+
+            .stat-box h2 {
+                font-size: 34px;
+            }
+
+            /* TITLES */
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+
+            .section-title p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            /* GRID FIX */
+
+            .category-grid,
+            .modern-destination-grid,
+            .offers-grid,
+            .testimonial-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* CARDS */
+
+            .category-card,
+            .offer-card,
+            .testimonial-card,
+            .modern-card {
+                width: 100%;
+            }
+
+            .modern-card {
+                height: 420px;
+            }
+
+            .top-row h3 {
+                font-size: 24px;
+            }
+
+            .modern-content p {
+                font-size: 14px;
+            }
+
+            .destination-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .price-btn {
+                width: 100%;
+            }
+
+            /* OFFER */
+
+            .offer-content {
+                padding: 22px;
+            }
+
+            .new-price {
+                font-size: 26px;
+            }
+
+            /* CTA */
+
+            .cta {
+                margin: 70px 16px;
+                padding: 60px 22px;
+                border-radius: 28px;
+            }
+
+            .cta h2 {
+                font-size: 34px;
+                line-height: 1.3;
+            }
+
+            .cta p {
+                font-size: 14px;
+            }
+
+            /* SEARCH POPUP */
+
+            .search-popup {
+                padding: 90px 16px 20px;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 100%;
+                padding: 22px;
+                border-radius: 24px;
+            }
+
+            .search-top h2 {
+                font-size: 24px;
+            }
+
+            .search-input-box {
+                height: 58px;
+                border-radius: 18px;
+            }
+
+            .search-input-box input {
+                font-size: 15px;
+            }
+
+            .search-results {
+                gap: 10px;
+            }
+
+            .search-item {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+
+            /* ACCOUNT MENU */
+
+            .account-menu {
+                width: 220px;
+                top: 65px;
+            }
+
+            /* FOOTER */
+
+            footer {
+                padding: 70px 16px 30px;
+            }
+
+            .footer-box {
+                text-align: left;
+            }
+
+            .social-icons {
+                justify-content: flex-start;
+            }
+
         }
     </style>
 </head>
@@ -1092,10 +1882,13 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Booking</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index2.html">Home 2</a></li>
+            <li><a href="aboutus1.html">About Us</a></li>
+            <li><a href="explore1.html">Explore</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
 
         <div class="nav-right">
@@ -1104,37 +1897,62 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
 
-            <div class="settings-wrapper">
 
-                <button class="settings-btn" id="settingsToggle">
-                    <i class="fa-solid fa-gear"></i>
-                </button>
 
-                <!-- SETTINGS MENU -->
+            <!-- SETTINGS MENU -->
+            <!-- COMBINED ACCOUNT DROPDOWN -->
 
-                <div class="settings-menu" id="settingsMenu">
+            <div class="account-wrapper">
 
-                    <div class="setting-item">
+                <div class="account-btn" id="accountToggle">
+
+                    <img id="accountImage" src="https://api.dicebear.com/7.x/notionists/svg?seed=Travel" alt="user">
+
+                    <div class="account-text">
+                        <h4 id="accountTitle">Sign In</h4>
+                        <small id="accountSubtitle">Guest</small>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+                <!-- DROPDOWN -->
+
+                <div class="account-menu" id="accountMenu">
+
+                    <a href="profile.html" class="account-item">
                         <i class="fa-solid fa-user"></i>
-                        <span>Edit Profile</span>
-                    </div>
+                        <span>Profile</span>
+                    </a>
 
-                    <div class="setting-item">
-                        <i class="fa-solid fa-heart"></i>
-                        <span>Wishlist</span>
-                    </div>
 
-                    <div class="setting-item">
+                    <a href="security.html" class="account-item">
+
                         <i class="fa-solid fa-lock"></i>
+
                         <span>Security</span>
+
+                    </a>
+
+                    <div class="account-item notification-item">
+
+                        <div class="notification-left">
+                            <i class="fa-solid fa-bell"></i>
+                            <span>Notifications</span>
+                        </div>
+
+                        <label class="switch">
+
+                            <input type="checkbox" id="notificationToggle">
+
+                            <span class="slider"></span>
+
+                        </label>
+
                     </div>
 
-                    <div class="setting-item">
-                        <i class="fa-solid fa-bell"></i>
-                        <span>Notifications</span>
-                    </div>
-
-                    <div class="setting-item logout-item">
+                    <div class="account-item logout-item" id="logoutBtn">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Logout</span>
                     </div>
@@ -1142,62 +1960,37 @@
                 </div>
 
             </div>
-            <!-- SIGN IN BUTTON -->
-            <a href="Register.html" style="text-decoration:none; color:white;" id="userLink">
-                <div class="profile-box" id="userBox">
-                    <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Travel" alt="user">
-                    <div>
-                        <h4>Sign In</h4>
 
-                    </div>
-                </div>
-            </a>
-
-        </div>
-
-        <div class="menu-btn">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-
-        </div>
-        <!-- SEARCH POPUP -->
-
-        <div class="search-popup" id="searchPopup">
-
-            <div class="search-box">
-
-                <div class="search-top">
-
-                    <h2>Search Destinations</h2>
-
-                    <i class="fa-solid fa-xmark" id="closeSearch"></i>
-
-                </div>
-
-                <div class="search-input-box">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    <input type="text" id="searchInput" placeholder="Search places like Bali, Dubai, Paris...">
-
-                </div>
-
-                <div class="search-results" id="searchResults">
-
-                    <div class="search-item">Bali</div>
-                    <div class="search-item">Dubai</div>
-                    <div class="search-item">Paris</div>
-                    <div class="search-item">Maldives</div>
-                    <div class="search-item">Tokyo</div>
-                    <div class="search-item">Singapore</div>
-                    <div class="search-item">Switzerland</div>
-
-                </div>
-
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
             </div>
 
         </div>
     </nav>
+
+    <!-- SEARCH POPUP -->
+
+    <div class="search-popup" id="searchPopup">
+
+        <div class="search-box">
+
+            <div class="search-top">
+                <h2>Search Destination</h2>
+
+                <i class="fa-solid fa-xmark" id="closeSearch"></i>
+            </div>
+
+            <div class="search-input-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text" id="searchInput" placeholder="Search destinations, tours, hotels...">
+            </div>
+
+
+        </div>
+
+    </div>
+
 
     <!-- HERO -->
 
@@ -1217,10 +2010,10 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="explore.html">
+                <a href="explore1.html">
                     <button class="primary-btn">Explore Now</button>
                 </a>
-                <button class="secondary-btn">View Packages</button>
+
             </div>
 
         </div>
@@ -1304,11 +2097,15 @@
         <div class="section-title">
 
             <h2>Trending Travel Spots</h2>
+
             <p>Explore hand picked luxury destinations worldwide.</p>
+
+            <a href="explore1.html" class="view-all-btn">
+                View All Destinations
+            </a>
+
         </div>
-
         <div class="modern-destination-grid">
-
             <!-- CARD 1 -->
 
             <div class="modern-card">
@@ -1322,20 +2119,19 @@
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>Bali</h3>
-                        <span>$499</span>
-                    </div>
+                    <h3>Bali</h3>
 
                     <p>Luxury beaches, tropical sunsets and unforgettable island adventures.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             4.9
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹59,999</button>
+
                     </div>
 
                 </div>
@@ -1355,20 +2151,19 @@
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>Switzerland</h3>
-                        <span>$999</span>
-                    </div>
+                    <h3>Switzerland</h3>
 
                     <p>Snow mountains, luxury train rides and breathtaking landscapes.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             5.0
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹69,999</button>
+
                     </div>
 
                 </div>
@@ -1388,20 +2183,19 @@
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>Dubai</h3>
-                        <span>$999</span>
-                    </div>
+                    <h3>Dubai</h3>
 
                     <p>Luxury shopping, skyscrapers and unforgettable desert adventures.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             4.8
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹89,999</button>
+
                     </div>
 
                 </div>
@@ -1421,20 +2215,19 @@
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>Paris</h3>
-                        <span>$799</span>
-                    </div>
+                    <h3>Paris</h3>
 
                     <p>Romantic cafes, iconic landmarks and beautiful city lights.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             4.9
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹67,777</button>
+
                     </div>
 
                 </div>
@@ -1454,20 +2247,19 @@
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>Maldives</h3>
-                        <span>$1299</span>
-                    </div>
+                    <h3>Maldives</h3>
 
                     <p>Crystal-clear beaches, luxury villas and private island resorts.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             5.0
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹59,999</button>
+
                     </div>
 
                 </div>
@@ -1487,26 +2279,24 @@
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>Tokyo</h3>
-                        <span>$1099</span>
-                    </div>
+                    <h3>Tokyo</h3>
 
                     <p>Futuristic cities, anime culture and unforgettable nightlife.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             4.9
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹99,999</button>
+
                     </div>
 
                 </div>
 
             </div>
-
 
             <!-- CARD 7 -->
 
@@ -1520,55 +2310,54 @@
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>Singapore</h3>
-                        <span>$899</span>
-                    </div>
+                    <h3>Singapore</h3>
 
                     <p>Luxury skyline views, modern attractions and vibrant nightlife.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             4.8
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹89,999</button>
+
                     </div>
 
                 </div>
+
             </div>
+
             <!-- CARD 8 -->
 
             <div class="modern-card">
 
                 <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad">
+
                 <div class="overlay"></div>
 
                 <div class="badge">Adventure</div>
 
                 <div class="modern-content">
 
-                    <div class="top-row">
-                        <h3>New Zealand</h3>
-                        <span>$1199</span>
-                    </div>
+                    <h3>New Zealand</h3>
 
                     <p>Adventure sports, beautiful mountains and thrilling experiences.</p>
 
                     <div class="bottom-row">
-                        <div>
+
+                        <div class="rating">
                             <i class="fa-solid fa-star"></i>
                             4.9
                         </div>
 
-                        <button>Explore</button>
+                        <button class="price-btn">₹67,899</button>
+
                     </div>
 
                 </div>
-
             </div>
-
         </div>
     </section>
 
@@ -1597,11 +2386,11 @@
                     <p>5 days luxury beach vacation with premium resorts.</p>
 
                     <div class="price-row">
-                        <div class="old-price">$1999</div>
-                        <div class="new-price">$1399</div>
+                        <div class="old-price">₹91999</div>
+                        <div class="new-price">₹69399</div>
                     </div>
 
-                    <button class="primary-btn">Book Offer</button>
+
 
                 </div>
 
@@ -1621,11 +2410,10 @@
                     <p>Perfect honeymoon destination with luxury hotels.</p>
 
                     <div class="price-row">
-                        <div class="old-price">$1499</div>
-                        <div class="new-price">$1199</div>
+                        <div class="old-price">₹99999</div>
+                        <div class="new-price">₹69999</div>
                     </div>
 
-                    <button class="primary-btn">Book Offer</button>
 
                 </div>
 
@@ -1645,11 +2433,11 @@
                     <p>Experience futuristic cities and Japanese culture.</p>
 
                     <div class="price-row">
-                        <div class="old-price">$1799</div>
-                        <div class="new-price">$1299</div>
+                        <div class="old-price">₹89999</div>
+                        <div class="new-price">₹59999</div>
                     </div>
 
-                    <button class="primary-btn">Book Offer</button>
+
 
                 </div>
 
@@ -1784,9 +2572,11 @@
             Start planning your dream vacation with premium travel deals and unforgettable experiences.
         </p>
 
-        <button class="secondary-btn">
-            Book Your Trip
-        </button>
+        <a href="explore1.html">
+            <button class="secondary-btn">
+                Book Your Trip
+            </button>
+        </a>
 
     </section>
 
@@ -1820,32 +2610,66 @@
                 </p>
 
                 <div class="social-icons">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </div>
 
+                    <a href="https://facebook.com" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://instagram.com" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://twitter.com" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+
+                    <a href="https://linkedin.com" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
             </div>
 
             <!-- QUICK LINKS -->
 
             <div class="footer-box">
                 <h3>Quick Links</h3>
-                <p>Home</p>
-                <p>About Us</p>
-                <p>Booking</p>
-                <p>Contact</p>
+
+                <p>
+                    <a href="index.html">Home</a>
+                </p>
+                <p><a href="index2.html">Home 2</a></p>
+                <p>
+                    <a href="aboutus1.html">About Us</a>
+                </p>
+                <p>
+                    <a href="explore1.html">Explore</a>
+                </p>
+
+                <p>
+                    <a href="booking.html">Booking</a>
+                </p>
+                <p>
+                    <a href="blog.html">Blog</a>
+                </p>
+                <p>
+                    <a href="contact.html">Contact</a>
+                </p>
             </div>
 
             <!-- SUPPORT -->
 
             <div class="footer-box">
                 <h3>Support</h3>
-                <p>FAQs</p>
-                <p>Contact Us</p>
-                <p>Privacy Policy</p>
-                <p>Terms of Service</p>
+                <div class="footer-links">
+
+                    <p> <a href="faq.html">FAQs</a></p>
+
+                    <p> <a href="security.html">Security</a></p>
+
+                    <p><a href="privacy.html">Privacy Policy</a></p>
+
+                </div>
             </div>
 
             <!-- CONTACT -->
@@ -1909,58 +2733,213 @@
             });
 
         });
-        const settingsToggle =
-            document.getElementById("settingsToggle");
+        /* SEARCH POPUP */
 
-        const settingsMenu =
-            document.getElementById("settingsMenu");
+        const searchPopup = document.getElementById("searchPopup");
 
-        settingsToggle.addEventListener("click", () => {
+        const openSearch = document.getElementById("searchBtn");
 
-            settingsMenu.classList.toggle("active");
+        const closeSearch = document.getElementById("closeSearch");
+
+        const searchInput = document.getElementById("searchInput");
+
+        const searchItems = document.querySelectorAll(".search-item");
+
+        // OPEN
+        openSearch.addEventListener("click", () => {
+            searchPopup.classList.add("active");
+        });
+
+        // CLOSE BUTTON
+        closeSearch.addEventListener("click", () => {
+            searchPopup.classList.remove("active");
+        });
+
+        // CLOSE OUTSIDE
+        searchPopup.addEventListener("click", (e) => {
+            if (e.target === searchPopup) {
+                searchPopup.classList.remove("active");
+            }
+        });
+
+        // SEARCH FILTER
+        searchInput.addEventListener("keyup", () => {
+
+            const value = searchInput.value.toLowerCase();
+
+            searchItems.forEach(item => {
+
+                const text = item.textContent.toLowerCase();
+
+                if (text.includes(value)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+
+            });
 
         });
 
-        document.addEventListener("click", (e) => {
+        searchInput.addEventListener("keydown", (e) => {
 
-            if (
-                !settingsToggle.contains(e.target) &&
-                !settingsMenu.contains(e.target)
-            ) {
+            if (e.key === "Enter") {
 
-                settingsMenu.classList.remove("active");
+                e.preventDefault();
+
+                const value = searchInput.value.trim().toLowerCase();
+
+                if (value !== "") {
+
+                    window.location.href =
+                        "explore1.html?place=" + encodeURIComponent(value);
+
+                }
 
             }
 
         });
-        /* SEARCH POPUP */
+        /* ACCOUNT DROPDOWN */
 
-        const searchBtn =
-            document.getElementById("searchBtn");
+        const accountToggle =
+            document.getElementById("accountToggle");
 
-        const searchPopup =
-            document.getElementById("searchPopup");
+        const accountMenu =
+            document.getElementById("accountMenu");
 
-        const closeSearch =
-            document.getElementById("closeSearch");
+        accountToggle.addEventListener("click", (e) => {
 
-        searchBtn.addEventListener("click", () => {
+            e.stopPropagation();
 
-            searchPopup.classList.add("active");
-
-        });
-
-        closeSearch.addEventListener("click", () => {
-
-            searchPopup.classList.remove("active");
+            accountMenu.classList.toggle("active");
 
         });
 
-        /* CLOSE OUTSIDE */
+        // CLOSE DROPDOWN OUTSIDE
+        document.addEventListener("click", (e) => {
 
-        searchPopup.addEventListener("click", (e) => {
+            if (
+                !accountToggle.contains(e.target) &&
+                !accountMenu.contains(e.target)
+            ) {
 
-            if (e.target === searchPopup) {
+                accountMenu.classList.remove("active");
+
+            }
+
+        });
+
+
+        /* LOGIN CHECK */
+
+        window.onload = function () {
+
+            const isLoggedIn =
+                localStorage.getItem("traveloLoggedIn");
+
+            const user =
+                localStorage.getItem("traveloUser");
+
+            const title =
+                document.getElementById("accountTitle");
+
+            const subtitle =
+                document.getElementById("accountSubtitle");
+
+            const image =
+                document.getElementById("accountImage");
+
+            if (isLoggedIn === "true") {
+
+                title.innerHTML = "Account";
+
+                subtitle.innerHTML = user;
+
+                image.src =
+                    `https://api.dicebear.com/7.x/notionists/svg?seed=${user}`;
+
+            } else {
+
+                title.innerHTML = "Sign In";
+
+                subtitle.innerHTML = "Guest";
+
+            }
+
+        };
+
+        /* LOGOUT */
+
+        const logoutBtn =
+            document.getElementById("logoutBtn");
+
+        logoutBtn.addEventListener("click", () => {
+
+            localStorage.removeItem("traveloLoggedIn");
+
+            localStorage.removeItem("traveloUser");
+
+            window.location.reload();
+
+        });
+        /* MOBILE MENU */
+
+        const menuBtn = document.querySelector(".menu-btn");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+
+        const notificationToggle =
+            document.getElementById("notificationToggle");
+
+        // LOAD SAVED STATE
+
+        if (localStorage.getItem("notifications") === "on") {
+            notificationToggle.checked = true;
+        }
+
+        notificationToggle.addEventListener("change", () => {
+
+            if (notificationToggle.checked) {
+                localStorage.setItem("notifications", "on");
+            } else {
+                localStorage.setItem("notifications", "off");
+            }
+
+        });
+
+        /* SEARCH DISPLAY CARD */
+
+        searchInput.addEventListener("keydown", (e) => {
+
+            if (e.key === "Enter") {
+
+                e.preventDefault();
+
+                const value =
+                    searchInput.value.trim().toLowerCase();
+
+                if (value === "") return;
+
+                /* FILTER DESTINATIONS */
+
+                const filtered =
+                    destinations.filter(place =>
+
+                        place.name.toLowerCase().includes(value)
+
+                    );
+
+                /* DISPLAY MATCHED CARDS */
+
+                renderDestinationCards(filtered);
+
+                renderCards(filtered);
+
+                /* CLOSE SEARCH POPUP */
 
                 searchPopup.classList.remove("active");
 
@@ -1968,37 +2947,32 @@
 
         });
 
-        /* SEARCH FILTER */
 
-        const searchInput =
+
+        const homeSearch =
             document.getElementById("searchInput");
 
-        const searchItems =
-            document.querySelectorAll(".search-item");
+        homeSearch.addEventListener("keydown", (e) => {
 
-        searchInput.addEventListener("keyup", () => {
+            if (e.key === "Enter") {
 
-            const value =
-                searchInput.value.toLowerCase();
+                e.preventDefault();
 
-            searchItems.forEach(item => {
+                const value =
+                    homeSearch.value.trim().toLowerCase();
 
-                const text =
-                    item.textContent.toLowerCase();
+                if (value !== "") {
 
-                if (text.includes(value)) {
-
-                    item.style.display = "block";
-
-                } else {
-
-                    item.style.display = "none";
+                    window.location.href =
+                        "explore1.html?search=" +
+                        encodeURIComponent(value);
 
                 }
 
-            });
+            }
 
         });
+
 
     </script>
 </body>
